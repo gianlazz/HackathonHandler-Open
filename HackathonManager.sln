@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager", "Hackath
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.Persistance", "HackathonManager.Persistance\HackathonManager.Persistance.csproj", "{50E87B9D-4054-4713-91CD-F480E82185CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.Mvc", "HackathonManager.Mvc\HackathonManager.Mvc.csproj", "{800C0B96-1C2F-425C-A000-1AE70A52552E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{50E87B9D-4054-4713-91CD-F480E82185CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50E87B9D-4054-4713-91CD-F480E82185CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50E87B9D-4054-4713-91CD-F480E82185CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{800C0B96-1C2F-425C-A000-1AE70A52552E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{800C0B96-1C2F-425C-A000-1AE70A52552E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{800C0B96-1C2F-425C-A000-1AE70A52552E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{800C0B96-1C2F-425C-A000-1AE70A52552E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
