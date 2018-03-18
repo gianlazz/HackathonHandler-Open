@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HackathonManager.Persistance;
+using HackathonManager.Mvc.Models;
 
 namespace HackathonManager.Mvc.Controllers
 {
@@ -10,7 +12,12 @@ namespace HackathonManager.Mvc.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            HackathonManagerEntities db = new HackathonManagerEntities();
+            MentorViewModel mentorViewModel = new MentorViewModel();
+
+            mentorViewModel.Mentors =  db.Mentors.ToList();
+
+            return View(mentorViewModel);
         }
 
         public ActionResult About()
