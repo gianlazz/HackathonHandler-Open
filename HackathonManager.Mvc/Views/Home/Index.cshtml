@@ -6,7 +6,7 @@
 <div class="jumbotron">
     <h1>On Premise Mentors</h1>
     <p class="lead">Browse through the selection of on premise mentors. If they're available you can request their assistance; doing so will send the user a sms message allerting them to come meet up with you. If the mentor accepts the request to help their card will be greyed out until they are finished.</p>
-    <p><a href="https://lazz.tech" class="btn btn-primary btn-lg">Check out www.lazz.tech</a></p>
+    <p><a href="http://lazz.tech" class="btn btn-primary btn-lg">Check out www.lazz.tech</a></p>
 </div>
 
 <!-- Trying to prevent youtube autoplay until modal opens then end on hide
@@ -40,57 +40,84 @@
         </div>
     </div>
 </div>
-
-@{
-    foreach (var mentor in Model.Mentors)
-    {
-        if (mentor.IsPresent == true)
-        {
-            <div class="card">
-                <img class="card-img-top" src="@mentor.Image" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">@mentor.Name</h5>
-                    <p class="card-text">@mentor.Description</p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                        Request Their Assistance
-                    </button>
-                </div>
-            </div>
-        }
-    }
-}
-
+<!--
+   <h2>All Mentors In Database</h2>
+<hr />
 <div class="row">
-    <div class="col-md-4">
-        <div class="card">
-            <img class="card-img-top" src="http://lazz.tech/uploads/2018/03/03/IMG_20180302_200735_212.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Gian Lazzarini</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                    Request Their Assistance
-                </button>
-            </div>
-        </div>
+@for (int i = 0; i < Model.Mentors.Count; i++)
+{
+    if (i > 0 && i % 3 == 0)
+    {
+        @:</div><div class="row">
+            // close and start new row
+        }
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img class="card-img-top" src="@Model.Mentors[i].Image" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">@Model.Mentors[i].Name</h5>
+                                <p class="card-text">@Model.Mentors[i].Description</p>
+                                <button type="button" class="@(Model.Mentors[i].IsAvailable ? "btn btn-primary" : "btn btn-outline-secondary")" data-toggle="modal" data-target="@(Model.Mentors[i].IsAvailable ? "#exampleModalCenter" : "")">
+                                    @(Model.Mentors[i].IsAvailable ? "Request Their Assistance" : "Currently Unavailable")
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+    }
+</div>
+<br /> 
+-->
+
+<div>
+    <h2>Present Mentors In Database</h2>
+    <hr />
+    <div class="row">
+    @for (int i = 0; i < Model.PresentMentors.Count; i++)
+    {
+        if (i > 0 && i % 3 == 0)
+        {
+            @:</div><div class="row">
+                // close and start new row
+            }
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img class="card-img-top" src="@Model.Mentors[i].Image" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">@Model.Mentors[i].Name</h5>
+                                    <p class="card-text">@Model.Mentors[i].Description</p>
+                                    <button type="button" class="@(Model.Mentors[i].IsAvailable ? "btn btn-primary" : "btn btn-outline-secondary")" data-toggle="modal" data-target="@(Model.Mentors[i].IsAvailable ? "#exampleModalCenter" : "")">
+                                        @(Model.Mentors[i].IsAvailable ? "Request Their Assistance" : "Currently Unavailable")
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+        }
     </div>
-    <div class="col-md-4">
-        <div class="card">
-            <img class="card-img-top" src="http://lazz.tech/uploads/2018/03/03/IMG_20180302_200735_212.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Gian Lazzarini</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Request Their Assistance</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
-            <img class="card-img-top" src="http://lazz.tech/uploads/2018/03/03/IMG_20180302_200735_212.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Gian Lazzarini</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Request Their Assistance</a>
-            </div>
-        </div>
+</div>
+<br />
+<div>
+    <h2>Currently Unavailable</h2>
+    <hr />
+    <div class="row">
+    @for (int i = 0; i < Model.AvailableMentors.Count; i++)
+    {
+        if (i > 0 && i % 3 == 0 && Model.Mentors[i].IsAvailable == false)
+        {
+            @:</div><div class="row">
+                // close and start new row
+            }
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img class="card-img-top" src="@Model.Mentors[i].Image" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">@Model.Mentors[i].Name</h5>
+                                    <p class="card-text">@Model.Mentors[i].Description</p>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                        Request Their Assistance
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+        }
     </div>
 </div>

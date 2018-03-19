@@ -16,6 +16,8 @@ namespace HackathonManager.Mvc.Controllers
             MentorViewModel mentorViewModel = new MentorViewModel();
 
             mentorViewModel.Mentors =  db.Mentors.ToList();
+            mentorViewModel.PresentMentors = db.Mentors.Where(o => o.IsPresent == true).ToList();
+            mentorViewModel.AvailableMentors = db.Mentors.Where(o => o.IsAvailable == true).ToList();
 
             return View(mentorViewModel);
         }
