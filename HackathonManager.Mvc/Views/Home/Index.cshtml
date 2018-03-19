@@ -86,7 +86,7 @@
                                     <h5 class="card-title">@Model.Mentors[i].Name</h5>
                                     <p class="card-text">@Model.Mentors[i].Description</p>
                                     <button type="button" class="@(Model.Mentors[i].IsAvailable ? "btn btn-primary" : "btn btn-outline-secondary")" data-toggle="modal" data-target="@(Model.Mentors[i].IsAvailable ? "#exampleModalCenter" : "")">
-                                        @(Model.Mentors[i].IsAvailable ? "Request Their Assistance" : "Currently Unavailable")
+                                        @(Model.Mentors[i].IsAvailable ? "Request Their Assistance" : "Notify When Available")
                                     </button>
                                 </div>
                             </div>
