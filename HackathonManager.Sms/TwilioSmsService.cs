@@ -14,7 +14,7 @@ namespace HackathonManager.Sms
     {
         // Find your Account Sid and Auth Token at twilio.com/console
         const string accountSid = TwilioCredentials.accountSid;
-        const string authToken = TwilioCredentials.;
+        const string authToken = TwilioCredentials.authToken;
 
         public static string SendSms(int fromPhoneNumber, int toPhoneNumber)
         {
