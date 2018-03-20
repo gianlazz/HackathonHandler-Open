@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HackathonManager.Interfaces
+namespace HackathonManager.DTO
 {
-    public class SmsService
+    class SmsDto
     {
-        //Responsible for newing up an Sms object?
     }
 }

@@ -16,15 +16,21 @@ namespace HackathonManager.Sms
         const string accountSid = TwilioCredentials.accountSid;
         const string authToken = TwilioCredentials.authToken;
 
-        public static string SendSms(int fromPhoneNumber, int toPhoneNumber)
+        public static string SendSms(uint toPhoneNumber, string messageBody)
         {
             TwilioClient.Init(accountSid, authToken);
 
-            var to = new PhoneNumber("+1" + fromPhoneNumber);
+            //var to = new PhoneNumber("+1" + fromPhoneNumber.ToString());
+            //var message = MessageResource.Create(
+            //    to,
+            //    from: new PhoneNumber("+1" + toPhoneNumber.ToString()),
+            //    body: "This is the ship that made the Kessel Run in fourteen parsecs?");
+
+            var to = new PhoneNumber("+1" + toPhoneNumber.ToString());
             var message = MessageResource.Create(
                 to,
-                from: new PhoneNumber("+1" + toPhoneNumber),
-                body: "This is the ship that made the Kessel Run in fourteen parsecs?");
+                from: new PhoneNumber("+12068006552"),
+                body: messageBody);
 
             return message.Sid;
         }
