@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DTO\SmsDto.cs" />
     <Compile Include="Interfaces\ISmsService.cs" />
+    <Compile Include="Sms.cs" />
     <Compile Include="SmsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
