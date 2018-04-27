@@ -40,11 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTO\Mentor.cs" />
-    <Compile Include="DTO\SmsDto.cs" />
+    <Compile Include="PocoModels\Mentor.cs" />
+    <Compile Include="PocoModels\SmsDto.cs" />
     <Compile Include="Interfaces\ISmsService.cs" />
     <Compile Include="RepositoryPattern\IRepository.cs" />
-    <Compile Include="Sms.cs" />
+    <Compile Include="PocoModels\Sms.cs" />
     <Compile Include="SmsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

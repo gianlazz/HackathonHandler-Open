@@ -31,8 +31,8 @@ namespace HackathonManager.Cli
 
                 var mentorFromDb = db.Single<DTO.Mentor>(x => x.PhoneNumber == mentor.PhoneNumber);
 
-                var SmsService = Context.GetTwilioSmsService();
-                Console.WriteLine(SmsService.SendSms(uint.Parse(mentorFromDb.PhoneNumber), 
+                var smsService = Context.GetTwilioSmsService();
+                Console.WriteLine(smsService.SendSms(uint.Parse(mentorFromDb.PhoneNumber), 
 $@"{mentorFromDb.Name}, you've been added in and registered as a mentor
 for this event. 
 You'll recieve prompts via sms from here out for your instructions. 
