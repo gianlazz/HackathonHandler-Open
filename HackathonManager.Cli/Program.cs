@@ -24,13 +24,21 @@ namespace HackathonManager.Cli
             mentor.IsAvailable = true;
             mentor.IsPresent = true;
 
-            var db = Context.GetMLabsMongoDbRepo();
-            db.Add(mentor);
+            try
+            {
+                var db = Context.GetMLabsMongoDbRepo();
+                db.Add(mentor);
 
-            var mentorFromDb = db.Single<DTO.Mentor>(x => x.PhoneNumber == mentor.PhoneNumber);
+                var mentorFromDb = db.Single<DTO.Mentor>(x => x.PhoneNumber == mentor.PhoneNumber);
 
-            var SmsService = Context.GetTwilioSmsService();
-            Console.WriteLine(SmsService.SendSms(int.Parse(mentorFromDb.PhoneNumber), Console.ReadLine()));
+                var SmsService = Context.GetTwilioSmsService();
+                Console.WriteLine(SmsService.SendSms(uint.Parse(mentorFromDb.PhoneNumber), Console.ReadLine()));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
             Console.ReadKey();
         }
