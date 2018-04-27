@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using HackathonManager.Persistance;
 using HackathonManager.Mvc.Models;
+using HackathonManager.DIContext;
 
 namespace HackathonManager.Mvc.Controllers
 {
@@ -18,6 +19,11 @@ namespace HackathonManager.Mvc.Controllers
             mentorViewModel.Mentors =  db.Mentors.ToList();
             mentorViewModel.PresentMentors = db.Mentors.Where(o => o.IsPresent == true).ToList();
             mentorViewModel.AvailableMentors = db.Mentors.Where(o => o.IsAvailable == true).ToList();
+
+            //var repo = Context.GetMLabsMongoDbRepo();
+            //mentorViewModel.Mentors = repo.All<Mentor>() as List<Mentor>;
+            //mentorViewModel.PresentMentors = repo.All<Mentor>().Where(x => x.IsPresent == true).ToList();
+            //mentorViewModel.AvailableMentors = repo.All<Mentor>().Where(x => x.IsAvailable == true).ToList();
 
             return View(mentorViewModel);
         }
