@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HackathonManager.MongoDB\HackathonManager.MongoDB.csproj" />
+    <ProjectReference Include="..\HackathonManager.Sms\HackathonManager.Sms.csproj" />
     <ProjectReference Include="..\HackathonManager\HackathonManager.csproj" />
   </ItemGroup>
 

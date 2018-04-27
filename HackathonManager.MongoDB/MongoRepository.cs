@@ -17,7 +17,7 @@ namespace HackathonManager.MongoDB
         public MongoRepository()
         {
             var client = new MongoClient();
-            _db = client.GetDatabase("HackathonManager");
+            _db = client.GetDatabase("hackathonmanager");
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace HackathonManager.MongoDB
         public MongoRepository(string connectionString)
         {
             var client = new MongoClient(connectionString);
-            _db = client.GetDatabase("HackathonManager");
+            _db = client.GetDatabase("hackathonmanager");
         }
 
         public void Add<T>(T item) where T : class, new()
