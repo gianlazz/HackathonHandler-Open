@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.Sms", "Hac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.Cli", "HackathonManager.Cli\HackathonManager.Cli.csproj", "{852340EC-89D3-4D5D-9F74-DC7AF1650835}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.DIContext", "HackathonManager.DIContext\HackathonManager.DIContext.csproj", "{D60802B9-228D-4923-87BE-910DCCE49589}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.MongoDB", "HackathonManager.MongoDB\HackathonManager.MongoDB.csproj", "{F799A03F-B394-45A5-B837-C6429AC446E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{852340EC-89D3-4D5D-9F74-DC7AF1650835}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{852340EC-89D3-4D5D-9F74-DC7AF1650835}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{852340EC-89D3-4D5D-9F74-DC7AF1650835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D60802B9-228D-4923-87BE-910DCCE49589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D60802B9-228D-4923-87BE-910DCCE49589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D60802B9-228D-4923-87BE-910DCCE49589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D60802B9-228D-4923-87BE-910DCCE49589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F799A03F-B394-45A5-B837-C6429AC446E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F799A03F-B394-45A5-B837-C6429AC446E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F799A03F-B394-45A5-B837-C6429AC446E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F799A03F-B394-45A5-B837-C6429AC446E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
