@@ -43,6 +43,7 @@
     <Compile Include="PocoModels\Mentor.cs" />
     <Compile Include="PocoModels\SmsDto.cs" />
     <Compile Include="Interfaces\ISmsService.cs" />
+    <Compile Include="PocoModels\Team.cs" />
     <Compile Include="RepositoryPattern\IRepository.cs" />
     <Compile Include="PocoModels\Sms.cs" />
     <Compile Include="SmsService.cs" />
