@@ -49,9 +49,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HackathonManager.Sms\HackathonManager.Sms.csproj">
-      <Project>{4d758799-e62d-4293-aa52-454d8b7855fc}</Project>
-      <Name>HackathonManager.Sms</Name>
+    <ProjectReference Include="..\HackathonManager.DIContext\HackathonManager.DIContext.csproj">
+      <Project>{d60802b9-228d-4923-87be-910dcce49589}</Project>
+      <Name>HackathonManager.DIContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HackathonManager\HackathonManager.csproj">
+      <Project>{afcf5d64-16ac-46f6-b220-3bb02e72cbb7}</Project>
+      <Name>HackathonManager</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

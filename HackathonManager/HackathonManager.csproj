@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\Mentor.cs" />
     <Compile Include="DTO\SmsDto.cs" />
     <Compile Include="Interfaces\ISmsService.cs" />
     <Compile Include="RepositoryPattern\IRepository.cs" />
