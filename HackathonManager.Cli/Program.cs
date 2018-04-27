@@ -32,7 +32,15 @@ namespace HackathonManager.Cli
                 var mentorFromDb = db.Single<DTO.Mentor>(x => x.PhoneNumber == mentor.PhoneNumber);
 
                 var SmsService = Context.GetTwilioSmsService();
-                Console.WriteLine(SmsService.SendSms(uint.Parse(mentorFromDb.PhoneNumber), Console.ReadLine()));
+                Console.WriteLine(SmsService.SendSms(uint.Parse(mentorFromDb.PhoneNumber), 
+$@"{mentorFromDb.Name}, you've been added in and registered as a mentor
+for this event. 
+You'll recieve prompts via sms from here out for your instructions. 
+After finishing a mentoring task it will be your responsability to
+message this number again saying FINISHED. That way you'll be able 
+to signify availability again.
+If you don't set yourself as FINISHED within the first 20 min you will
+be prompted to see if you're done every 15 minutes there out until you are."));
             }
             catch (Exception)
             {
