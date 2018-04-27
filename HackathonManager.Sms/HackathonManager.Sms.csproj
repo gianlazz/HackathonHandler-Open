@@ -58,11 +58,16 @@
   <ItemGroup>
     <Compile Include="TwilioCredentials.cs" />
     <Compile Include="TwilioSmsService.cs" />
-    <Compile Include="ISmsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HackathonManager\HackathonManager.csproj">
+      <Project>{afcf5d64-16ac-46f6-b220-3bb02e72cbb7}</Project>
+      <Name>HackathonManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

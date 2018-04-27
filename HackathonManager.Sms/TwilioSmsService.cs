@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HackathonManager.DTO;
+using HackathonManager.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,21 +12,16 @@ using Twilio.Types;
 
 namespace HackathonManager.Sms
 {
-    public class TwilioSmsService
+    public class TwilioSmsService : ISmsService
     {
         // Find your Account Sid and Auth Token at twilio.com/console
         const string accountSid = TwilioCredentials.accountSid;
         const string authToken = TwilioCredentials.authToken;
 
-        public static string SendSms(uint toPhoneNumber, string messageBody)
+
+        public SmsDto SendSms(uint toPhoneNumber, string messageBody)
         {
             TwilioClient.Init(accountSid, authToken);
-
-            //var to = new PhoneNumber("+1" + fromPhoneNumber.ToString());
-            //var message = MessageResource.Create(
-            //    to,
-            //    from: new PhoneNumber("+1" + toPhoneNumber.ToString()),
-            //    body: "This is the ship that made the Kessel Run in fourteen parsecs?");
 
             var to = new PhoneNumber("+1" + toPhoneNumber.ToString());
             var message = MessageResource.Create(
@@ -32,7 +29,15 @@ namespace HackathonManager.Sms
                 from: new PhoneNumber("+12068006552"),
                 body: messageBody);
 
-            return message.Sid;
+            SmsDto smsDto = new SmsDto();
+            smsDto.DateCreated = DateTime.Now;
+            smsDto.ToPhoneNumber = $"+1{toPhoneNumber}";
+            smsDto.FromPhoneNumber = "+12068006552";
+            smsDto.MessageBody = messageBody;
+            smsDto.Sid = message.Sid;
+
+            return smsDto;
         }
+
     }
 }

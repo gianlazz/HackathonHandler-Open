@@ -1,12 +1,14 @@
-﻿using System;
+﻿using HackathonManager.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HackathonManager
+namespace HackathonManager.Interfaces
 {
-    class ISmsService
+    public interface ISmsService
     {
+        SmsDto SendSms(uint toPhoneNumber, string messageBody);
     }
 }
