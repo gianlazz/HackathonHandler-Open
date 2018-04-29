@@ -70,7 +70,9 @@ namespace HackathonManager.MongoDB
 
         public T Single<T>(Expression<Func<T, bool>> expression) where T : class, new()
         {
-            return All<T>().Where(expression).SingleOrDefault();
+            //return All<T>().Where(expression).SingleOrDefault();
+            //return All<T>().Where(expression).Single();
+            return All<T>().Where(expression).FirstOrDefault();
         }
     }
 }

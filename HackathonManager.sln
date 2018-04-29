@@ -13,9 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.Sms", "Hac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.Cli", "HackathonManager.Cli\HackathonManager.Cli.csproj", "{852340EC-89D3-4D5D-9F74-DC7AF1650835}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.DIContext", "HackathonManager.DIContext\HackathonManager.DIContext.csproj", "{D60802B9-228D-4923-87BE-910DCCE49589}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.MongoDB", "HackathonManager.MongoDB\HackathonManager.MongoDB.csproj", "{50001B15-98E6-49E4-ABCB-97045DF34DFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.MongoDB", "HackathonManager.MongoDB\HackathonManager.MongoDB.csproj", "{F799A03F-B394-45A5-B837-C6429AC446E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.DIContext", "HackathonManager.DIContext\HackathonManager.DIContext.csproj", "{08893AB7-14DA-4501-8CF8-1EC76E3A78C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,14 +43,14 @@ Global
 		{852340EC-89D3-4D5D-9F74-DC7AF1650835}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{852340EC-89D3-4D5D-9F74-DC7AF1650835}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{852340EC-89D3-4D5D-9F74-DC7AF1650835}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D60802B9-228D-4923-87BE-910DCCE49589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D60802B9-228D-4923-87BE-910DCCE49589}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D60802B9-228D-4923-87BE-910DCCE49589}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D60802B9-228D-4923-87BE-910DCCE49589}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F799A03F-B394-45A5-B837-C6429AC446E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F799A03F-B394-45A5-B837-C6429AC446E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F799A03F-B394-45A5-B837-C6429AC446E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F799A03F-B394-45A5-B837-C6429AC446E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50001B15-98E6-49E4-ABCB-97045DF34DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50001B15-98E6-49E4-ABCB-97045DF34DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50001B15-98E6-49E4-ABCB-97045DF34DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50001B15-98E6-49E4-ABCB-97045DF34DFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08893AB7-14DA-4501-8CF8-1EC76E3A78C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08893AB7-14DA-4501-8CF8-1EC76E3A78C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08893AB7-14DA-4501-8CF8-1EC76E3A78C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08893AB7-14DA-4501-8CF8-1EC76E3A78C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
