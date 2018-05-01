@@ -26,7 +26,24 @@ namespace HackathonManager.Cli
 
             //var db = Context.GetMLabsMongoDbRepo();
             var db = Context.GetLocalMongoDbRepo();
-            db.Add(mentor);
+
+            //Check to see if this person is already in the db
+            if (db.Single<DTO.Mentor>(x => x.Name == mentor.Name) != null)
+            {
+                Console.WriteLine($"{mentor.Name} has already been registered.");
+                Console.ReadKey();
+                return;
+            }
+            if (db.Single<DTO.Mentor>(x => x.PhoneNumber == mentor.PhoneNumber) != null)
+            {
+                Console.WriteLine($"{mentor.PhoneNumber} has already been registered.");
+                Console.ReadKey();
+                return;
+            }
+            try
+            {
+                db.Add(mentor);
+                var mentorFromDb = db.Single<DTO.Mentor>(x => x.Name == mentor.Name);
 
             var mentorFromDb = db.Single<DTO.Mentor>(x => x.PhoneNumber == mentor.PhoneNumber);
 
@@ -41,8 +58,13 @@ namespace HackathonManager.Cli
             $"\n\nIf you don't set yourself as FINISHED within the first 20 min you will" +
             $"be prompted to see if you're done every 15 minutes there out until you are."));
 
-            Console.WriteLine($"Introductory sms sent to {mentor.Name} at {mentor.PhoneNumber}.");
-            Console.ReadKey();
+                Console.WriteLine($"Introductory sms sent to {mentor.Name} at {mentor.PhoneNumber}.");
+                Console.ReadKey();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception.ToString());
+            }
         }
     }
 }
