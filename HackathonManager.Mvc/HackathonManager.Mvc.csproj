@@ -408,6 +408,10 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HackathonManager.MongoDB\HackathonManager.MongoDB.csproj">
+      <Project>{50001b15-98e6-49e4-abcb-97045df34dfd}</Project>
+      <Name>HackathonManager.MongoDB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HackathonManager.Persistance\HackathonManager.Persistance.csproj">
       <Project>{50e87b9d-4054-4713-91cd-f480e82185cf}</Project>
       <Name>HackathonManager.Persistance</Name>
