@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using HackathonManager.Persistance;
 using HackathonManager.Mvc.Models;
-using HackathonManager.DIContext;
+//using HackathonManager.DIContext;
 
 namespace HackathonManager.Mvc.Controllers
 {

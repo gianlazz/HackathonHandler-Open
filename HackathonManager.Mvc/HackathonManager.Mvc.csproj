@@ -408,17 +408,9 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HackathonManager.DIContext\HackathonManager.DIContext.csproj">
-      <Project>{d60802b9-228d-4923-87be-910dcce49589}</Project>
-      <Name>HackathonManager.DIContext</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HackathonManager.Persistance\HackathonManager.Persistance.csproj">
       <Project>{50e87b9d-4054-4713-91cd-f480e82185cf}</Project>
       <Name>HackathonManager.Persistance</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HackathonManager.Sms\HackathonManager.Sms.csproj">
-      <Project>{4d758799-e62d-4293-aa52-454d8b7855fc}</Project>
-      <Name>HackathonManager.Sms</Name>
     </ProjectReference>
     <ProjectReference Include="..\HackathonManager\HackathonManager.csproj">
       <Project>{afcf5d64-16ac-46f6-b220-3bb02e72cbb7}</Project>
