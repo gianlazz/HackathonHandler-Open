@@ -32,7 +32,7 @@ namespace HackathonManager.Cli
 
             var smsService = Context.GetTwilioSmsService();
             Console.WriteLine(smsService.SendSms(uint.Parse(mentorFromDb.PhoneNumber),
-            $"🔥 {mentorFromDb.Name}, you've been added in and registered as a mentor for this event. " +
+            $"🔥 {mentorFromDb.Name}, you've been added in and registered as a mentor for this event. 🔥" +
 
             $"\n\nYou'll recieve prompts via sms from here out for your instructions. " +
             $"After finishing a mentoring task it will be your responsability to" +
