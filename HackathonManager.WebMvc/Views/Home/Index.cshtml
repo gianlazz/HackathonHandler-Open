@@ -1,0 +1,32 @@
+﻿@{
+                /**/
+
+                ViewBag.Title = "Home Page";
+}
+@model List<HackathonManager.DTO.Mentor>
+
+<div class="jumbotron">
+    <h1>Seattle-Eastside Mentors</h1>
+    <p>Browse through the selection of on premise mentors. If they're available you can request their assistance; doing so will send the mentor an sms message alerting them to come meet up with you.</p>
+    <p>If the mentor accepts the request to help their card will be greyed out until they are finished.</p>
+</div>
+
+@{
+    foreach (var Mentor in Model)
+    {
+        <p>@Mentor.Name</p>
+
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="@Mentor.Image" alt="...">
+                    <div class="caption">
+                        <h3>@Mentor.Name</h3>
+                        <p>@Mentor.Description</p>
+                        <p><a href="#" class="btn btn-primary" role="button">Request Assistance</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

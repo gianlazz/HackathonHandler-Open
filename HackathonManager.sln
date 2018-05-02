@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.MongoDB", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.DIContext", "HackathonManager.DIContext\HackathonManager.DIContext.csproj", "{08893AB7-14DA-4501-8CF8-1EC76E3A78C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.WebMvc", "HackathonManager.WebMvc\HackathonManager.WebMvc.csproj", "{4CBA42CB-4696-4756-8568-56EDA5A771DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{08893AB7-14DA-4501-8CF8-1EC76E3A78C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08893AB7-14DA-4501-8CF8-1EC76E3A78C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08893AB7-14DA-4501-8CF8-1EC76E3A78C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CBA42CB-4696-4756-8568-56EDA5A771DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CBA42CB-4696-4756-8568-56EDA5A771DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CBA42CB-4696-4756-8568-56EDA5A771DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CBA42CB-4696-4756-8568-56EDA5A771DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
