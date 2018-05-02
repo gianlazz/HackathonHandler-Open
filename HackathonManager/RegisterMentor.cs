@@ -24,7 +24,7 @@ namespace HackathonManager
         {
             _Repository.Add(mentor);
 
-            var mentorFromDb = db.Single<DTO.Mentor>(x => x.Name == mentor.Name);
+            var mentorFromDb = _Repository.Single<DTO.Mentor>(x => x.Name == mentor.Name);
 
             _SmsService.SendSms(uint.Parse(mentorFromDb.PhoneNumber),
             $"🔥 {mentorFromDb.Name}, you've been added in and registered as a mentor for this event. 🔥" +
