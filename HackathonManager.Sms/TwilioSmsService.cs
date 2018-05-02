@@ -17,6 +17,7 @@ namespace HackathonManager.Sms
         // Find your Account Sid and Auth Token at twilio.com/console
         const string accountSid = TwilioCredentials.accountSid;
         const string authToken = TwilioCredentials.authToken;
+        const string fromNumber = TwilioCredentials.fromTwilioNumber;
 
 
         public SmsDto SendSms(uint toPhoneNumber, string messageBody)
@@ -26,13 +27,13 @@ namespace HackathonManager.Sms
             var to = new PhoneNumber("+1" + toPhoneNumber.ToString());
             var message = MessageResource.Create(
                 to,
-                from: new PhoneNumber("+12068006552"),
+                from: new PhoneNumber($"+1{fromNumber}"),
                 body: messageBody);
 
             SmsDto smsDto = new SmsDto();
             smsDto.DateCreated = DateTime.Now;
             smsDto.ToPhoneNumber = $"+1{toPhoneNumber}";
-            smsDto.FromPhoneNumber = "+12068006552";
+            smsDto.FromPhoneNumber = $"+1{fromNumber}";
             smsDto.MessageBody = messageBody;
             smsDto.Sid = message.Sid;
 
