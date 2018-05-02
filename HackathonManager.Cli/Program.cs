@@ -42,10 +42,8 @@ namespace HackathonManager.Cli
             }
             try
             {
-                db.Add(mentor);
-                var mentorFromDb = db.Single<DTO.Mentor>(x => x.Name == mentor.Name);
-
-            var mentorFromDb = db.Single<DTO.Mentor>(x => x.PhoneNumber == mentor.PhoneNumber);
+            db.Add(mentor);
+            var mentorFromDb = db.Single<DTO.Mentor>(x => x.Name == mentor.Name);
 
             var smsService = Context.GetTwilioSmsService();
             Console.WriteLine(smsService.SendSms(uint.Parse(mentorFromDb.PhoneNumber),
