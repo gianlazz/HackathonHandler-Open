@@ -24,29 +24,29 @@ namespace HackathonManager.Cli
             mentor.IsAvailable = true;
             mentor.IsPresent = true;
 
-            //var db = Context.GetMLabsMongoDbRepo();
-            var db = Context.GetLocalMongoDbRepo();
+            var db = Context.GetMLabsMongoDbRepo();
+            //var db = Context.GetLocalMongoDbRepo();
 
             //Check to see if this person is already in the db
-            if (db.Single<DTO.Mentor>(x => x.Name == mentor.Name) != null)
-            {
-                Console.WriteLine($"{mentor.Name} has already been registered.");
-                Console.ReadKey();
-                return;
-            }
-            if (db.Single<DTO.Mentor>(x => x.PhoneNumber == mentor.PhoneNumber) != null)
-            {
-                Console.WriteLine($"{mentor.PhoneNumber} has already been registered.");
-                Console.ReadKey();
-                return;
-            }
+            //if (db.Single<DTO.Mentor>(x => x.Name == mentor.Name) != null)
+            //{
+            //    Console.WriteLine($"{mentor.Name} has already been registered.");
+            //    Console.ReadKey();
+            //    return;
+            //}
+            //if (db.Single<DTO.Mentor>(x => x.PhoneNumber == mentor.PhoneNumber) != null)
+            //{
+            //    Console.WriteLine($"{mentor.PhoneNumber} has already been registered.");
+            //    Console.ReadKey();
+            //    return;
+            //}
             try
             {
             db.Add(mentor);
             var mentorFromDb = db.Single<DTO.Mentor>(x => x.Name == mentor.Name);
 
             var smsService = Context.GetTwilioSmsService();
-            Console.WriteLine(smsService.SendSms(uint.Parse(mentorFromDb.PhoneNumber),
+            smsService.SendSms(uint.Parse(mentorFromDb.PhoneNumber),
             $"🔥 {mentorFromDb.Name}, you've been added in and registered as a mentor for this event. 🔥" +
 
             $"\n\nYou'll recieve prompts via sms from here out for your instructions. " +
@@ -54,7 +54,7 @@ namespace HackathonManager.Cli
             $"message this number again saying FINISHED. That way you'll be able to signify availability again." +
 
             $"\n\nIf you don't set yourself as FINISHED within the first 20 min you will" +
-            $"be prompted to see if you're done every 15 minutes there out until you are."));
+            $"be prompted to see if you're done every 5 minutes there out until you are.");
 
                 Console.WriteLine($"Introductory sms sent to {mentor.Name} at {mentor.PhoneNumber}.");
                 Console.ReadKey();
