@@ -42,22 +42,8 @@ namespace HackathonManager.Cli
             //}
             try
             {
-            db.Add(mentor);
-            var mentorFromDb = db.Single<DTO.Mentor>(x => x.Name == mentor.Name);
-
-            var smsService = Context.GetTwilioSmsService();
-            smsService.SendSms(uint.Parse(mentorFromDb.PhoneNumber),
-            $"🔥 {mentorFromDb.Name}, you've been added in and registered as a mentor for this event. 🔥" +
-
-            $"\n\nYou'll recieve prompts via sms from here out for your instructions. " +
-            $"After finishing a mentoring task it will be your responsability to" +
-            $"message this number again saying FINISHED. That way you'll be able to signify availability again." +
-
-            $"\n\nIf you don't set yourself as FINISHED within the first 20 min you will" +
-            $"be prompted to see if you're done every 5 minutes there out until you are.");
-
-                Console.WriteLine($"Introductory sms sent to {mentor.Name} at {mentor.PhoneNumber}.");
-                Console.ReadKey();
+                var registerMentor = new RegisterMentor(Context.GetMLabsMongoDbRepo(), Context.GetTwilioSmsService());
+                registerMentor.Register(mentor);
             }
             catch (Exception exception)
             {
