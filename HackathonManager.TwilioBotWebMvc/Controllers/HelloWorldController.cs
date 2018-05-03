@@ -13,6 +13,29 @@ namespace HackathonManager.TwilioBotWebMvc.Controllers
 {
     public class HelloWorldController : TwilioController
     {
+        // GET: HelloWorld
+        //[HttpPost]
+        //public TwiMLResult Index(SmsRequest request)
+        //{
+        //    var response = new MessagingResponse();
+        //    response.Message("Hello World");
+        //    return TwiML(response);
+        //}
+
+        //public void Index(SmsRequest request)
+        //{
+        //    var smsDto = new SmsDto();
+        //    smsDto.DateCreated = DateTime.Now;
+        //    smsDto.MessageBody = request.Body;
+        //    smsDto.Sid = request.SmsSid;
+        //    smsDto.ToPhoneNumber = "+12065086735";
+        //    smsDto.FromPhoneNumber = String.Empty;
+
+        //    var Db = MvcApplication.DbRepo;
+
+        //    Db.Add<SmsDto>(smsDto);
+        //}
+
         /* 
             <TwilioResponse>
                 <SMSMessage>
@@ -37,29 +60,7 @@ namespace HackathonManager.TwilioBotWebMvc.Controllers
             </TwilioResponse>
          */
 
-        // GET: HelloWorld
-        //[HttpPost]
-        //public TwiMLResult Index(SmsRequest request)
-        //{
-        //    var response = new MessagingResponse();
-        //    response.Message("Hello World");
-        //    return TwiML(response);
-        //}
-
-        //public void Index(SmsRequest request)
-        //{
-        //    var smsDto = new SmsDto();
-        //    smsDto.DateCreated = DateTime.Now;
-        //    smsDto.MessageBody = request.Body;
-        //    smsDto.Sid = request.SmsSid;
-        //    smsDto.ToPhoneNumber = "+12065086735";
-        //    smsDto.FromPhoneNumber = String.Empty;
-
-        //    var Db = MvcApplication.DbRepo;
-
-        //    Db.Add<SmsDto>(smsDto);
-        //}
-
+        [HttpPost]
         public void Index(string From, string Body)
         {
             var smsDto = new SmsDto();
