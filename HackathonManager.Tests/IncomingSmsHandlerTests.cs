@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using HackathonManager.RepositoryPattern;
 using HackathonManager.Interfaces;
 using HackathonManager;
+using HackathonManager.DTO;
+using Moq;
 
 namespace HackathonManager.Tests
 {
@@ -17,25 +19,33 @@ namespace HackathonManager.Tests
         public void test()
         {
             //Arrange
-
+            var incomingSmsHandler = new IncomingSmsHandler(MockSmsService().Object, MockRepository().Object, MockLogger().Object);
+            var recievedSms = new SmsDto();
+            recievedSms.FromPhoneNumber = "5555555555";
+            recievedSms.ToPhoneNumber = "2222222222";
 
             //Act
+            incomingSmsHandler.Process(recievedSms);
 
             //Assert
         }
 
         #region Helper Methods
-        private IRepository GetMockRepository()
+        private Mock<IRepository> MockRepository()
         {
+            Mock<IRepository> mock = new Mock<IRepository>();
+            //mock.Setup(x => x.Add(new Object)).
             return null;
         }
 
-        private ISmsService GetMockSmsService()
+        private Mock<ISmsService> MockSmsService()
         {
+            Mock<ISmsService> mock = new Mock<ISmsService>();
+            //mock.Setup(x => x.SendSms(null, ""))
             return null;
         }
 
-        private ILogger GetMockLogger()
+        private Mock<ILogger> MockLogger()
         {
             return null;
         }
