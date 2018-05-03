@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IncomingSmsHandler.cs" />
     <Compile Include="PocoModels\Mentor.cs" />
     <Compile Include="PocoModels\SmsDto.cs" />
     <Compile Include="Interfaces\ISmsService.cs" />
