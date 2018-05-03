@@ -25,22 +25,45 @@ namespace HackathonManager
 
         public void Process(SmsDto incomingSmsDto)
         {
-            CheckIfTheyreValidUser(incomingSmsDto);
+            if (CheckIfTheyreValidUser(incomingSmsDto))
+                return;
+            Isfinished(incomingSmsDto);
         }
 
-        private void CheckIfTheyreValidUser(SmsDto incomingSms)
+        private bool Isfinished(SmsDto incomingSmsDto)
+        {
+            if (incomingSmsDto.MessageBody.ToLower().Contains("finished"))
+            {
+                _smsService.SendSms(uint.Parse(incomingSmsDto.FromPhoneNumber),
+                    "Thank you, you'll now be set back as available for others" +
+                    "to request your help.");
+
+                //Set the person from the incomingSmsDto back to isAvailable = true
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool CheckIfTheyreValidUser(SmsDto incomingSms)
         {
             try
             {
-                if(_repo.Single<Mentor>(x => x.PhoneNumber == incomingSms.FromPhoneNumber) != null) { }
-                if(_repo.Single<Judge>(x => x.PhoneNumber == incomingSms.FromPhoneNumber) != null) { }
-                if(_repo.Single<Team>(x => x.PhoneNumber == incomingSms.FromPhoneNumber) != null) { }
+                if (_repo.Single<Mentor>(x => x.PhoneNumber == incomingSms.FromPhoneNumber) != null)
+                    return true;
+                if (_repo.Single<Judge>(x => x.PhoneNumber == incomingSms.FromPhoneNumber) != null)
+                    return true;
+                if (_repo.Single<Team>(x => x.PhoneNumber == incomingSms.FromPhoneNumber) != null)
+                    return true;
             }
             catch (Exception exception)
             {
                 _smsService.SendSms(uint.Parse(incomingSms.FromPhoneNumber), exception.ToString());
                 _logger.Log(exception);
             }
+            return false;
         }
     }
 }
