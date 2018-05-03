@@ -19,7 +19,10 @@ namespace HackathonManager.Tests
         public void test()
         {
             //Arrange
-            var incomingSmsHandler = new IncomingSmsHandler(MockSmsService().Object, MockRepository().Object, MockLogger().Object);
+            var smsMock = MockSmsService();
+            var repositoryMock = MockRepository();
+            var loggerMock = MockLogger();
+            var incomingSmsHandler = new IncomingSmsHandler(smsMock.Object, repositoryMock.Object, loggerMock.Object);
             var recievedSms = new SmsDto();
             recievedSms.FromPhoneNumber = "5555555555";
             recievedSms.ToPhoneNumber = "2222222222";
@@ -28,6 +31,7 @@ namespace HackathonManager.Tests
             incomingSmsHandler.Process(recievedSms);
 
             //Assert
+            //Assert.That(() smsMock.);
         }
 
         #region Helper Methods
@@ -35,19 +39,20 @@ namespace HackathonManager.Tests
         {
             Mock<IRepository> mock = new Mock<IRepository>();
             //mock.Setup(x => x.Add(new Object)).
-            return null;
+            return mock;
         }
 
         private Mock<ISmsService> MockSmsService()
         {
             Mock<ISmsService> mock = new Mock<ISmsService>();
             //mock.Setup(x => x.SendSms(null, ""))
-            return null;
+            return mock;
         }
 
         private Mock<ILogger> MockLogger()
         {
-            return null;
+            Mock<ILogger> mock = new Mock<ILogger>();
+            return mock;
         }
         #endregion
     }
