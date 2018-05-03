@@ -9,9 +9,11 @@ namespace HackathonManager
 {
     public class IncomingSmsHandler
     {
-        public IncomingSmsHandler()
-        {
+        private List<Func<string, bool>> _actionConditions;
 
+        public IncomingSmsHandler(List<Func<string, bool>> actionConditions)
+        {
+            _actionConditions = actionConditions;
         }
 
         public void Process(SmsDto incomingSmsDto)
