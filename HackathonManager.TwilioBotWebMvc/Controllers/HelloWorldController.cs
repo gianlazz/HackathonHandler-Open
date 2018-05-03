@@ -28,6 +28,12 @@ namespace HackathonManager.TwilioBotWebMvc.Controllers
             smsDto.DateCreated = DateTime.Now;
             smsDto.MessageBody = request.Body;
             smsDto.Sid = request.SmsSid;
+            smsDto.ToPhoneNumber = "+12065086735";
+            smsDto.FromPhoneNumber = String.Empty;
+
+            var Db = MvcApplication.DbRepo;
+
+            Db.Add<SmsDto>(smsDto);
         }
     }
 }
