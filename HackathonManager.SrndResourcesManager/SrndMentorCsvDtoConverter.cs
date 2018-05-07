@@ -10,7 +10,21 @@ namespace HackathonManager
 {
     public class SrndMentorCsvDtoConverter
     {
-
+        /* [0] = event
+        * [1] = type
+        * [2] = lastname
+        * [3] = firstname
+        * [4] = email
+        * [5] = age
+        * [6] = promocode
+        * [7] = paid
+        * [8] = parentname
+        * [9] = parentemail
+        * [10] = parentphone
+        * [11] = parentphonealt
+        * [12] = checkedin
+        * [13] = created
+        */
 
         public List<Mentor> Parse(string csv)
         {
@@ -28,7 +42,14 @@ namespace HackathonManager
                 }
             }
 
-            //var splitCsv = _csv.Split(',').Select(p => p.Split('=')).ToArray();
+            foreach (var mentor in mentorCsvLines)
+            {
+                mentors.Add(new Mentor
+                {
+                    GuidId = new Guid
+
+                });
+            }
 
             return null;
         }

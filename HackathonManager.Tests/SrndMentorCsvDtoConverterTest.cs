@@ -34,21 +34,6 @@ seattle-eastside,student,Zade,Shreyas,anuradhazade@gmail.com,,,0.00,,,,,,2018-04
 seattle-eastside,student,Zhou,Adam,15026966737@163.com,,,15.00,,,,,,2018-05-03 13:54:45
 seattle-eastside,vip,King,Brian,brian.king@t-mobile.com,,,0.00,,,,,,2018-05-04 10:14:01
 seattle-eastside,vip,Legere,John,john.legere@t-mobile.com,,,0.00,,,,,,2018-05-04 10:11:03";
-        /* [0] = event
- * [1] = type
- * [2] = lastname
- * [3] = firstname
- * [4] = email
- * [5] = age
- * [6] = promocode
- * [7] = paid
- * [8] = parentname
- * [9] = parentemail
- * [10] = parentphone
- * [11] = parentphonealt
- * [12] = checkedin
- * [13] = created
- */
 
         [Test]
         public void ThereShouldBe22MentorsReturned()
