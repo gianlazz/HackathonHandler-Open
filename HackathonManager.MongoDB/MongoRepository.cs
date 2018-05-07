@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using HackathonManager.RepositoryPattern;
+using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
 
 namespace HackathonManager.MongoDB
@@ -18,6 +19,10 @@ namespace HackathonManager.MongoDB
         {
             var client = new MongoClient();
             _db = client.GetDatabase("hackathonmanager");
+
+            var pack = new ConventionPack();
+            pack.Add(new IgnoreExtraElementsConvention(true));
+            ConventionRegistry.Register("My Solution Conventions", pack, t => true);
         }
 
         /// <summary>
@@ -28,6 +33,10 @@ namespace HackathonManager.MongoDB
         {
             var client = new MongoClient(connectionString);
             _db = client.GetDatabase("hackathonmanager");
+
+            var pack = new ConventionPack();
+            pack.Add(new IgnoreExtraElementsConvention(true));
+            ConventionRegistry.Register("My Solution Conventions", pack, t => true);
         }
 
         public void Add<T>(T item) where T : class, new()

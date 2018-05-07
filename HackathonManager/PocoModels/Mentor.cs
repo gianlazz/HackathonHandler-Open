@@ -8,7 +8,7 @@ namespace HackathonManager.DTO
 {
     public class Mentor
     {
-        public System.Guid Id { get; set; }
+        public System.Guid GuidId { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
         public int Age { get; set; }

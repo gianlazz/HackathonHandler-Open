@@ -16,8 +16,8 @@ namespace HackathonManager.WebMvc.Controllers
             var Db = MvcApplication.DbRepo;
 
             //var db = Context.GetMLabsMongoDbRepo();
-            //var model = new List<Mentor>();
-            var model = Db.All<Mentor>().ToList();
+            var model = new List<Mentor>();
+            model = Db.All<Mentor>().ToList();
             //mentorViewModel.PresentMentors = repo.All<Mentor>().Where(x => x.IsPresent == true).ToList();
             //mentorViewModel.AvailableMentors = repo.All<Mentor>().Where(x => x.IsAvailable == true).ToList();
 
