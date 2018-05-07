@@ -10,7 +10,7 @@ namespace HackathonManager.WebMvc
 {
     public class MvcApplication : System.Web.HttpApplication
     {
-        public static HackathonManager.RepositoryPattern.IRepository DbRepo = DIContext.Context.GetLocalMongoDbRepo();
+        public static HackathonManager.RepositoryPattern.IRepository DbRepo = DIContext.Context.GetMLabsMongoDbRepo();
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
