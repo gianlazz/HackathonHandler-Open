@@ -46,7 +46,7 @@ namespace HackathonManager
             {
                 mentors.Add(new Mentor
                 {
-                    GuidId = new Guid,
+                    GuidId = new Guid
 
                 });
             }

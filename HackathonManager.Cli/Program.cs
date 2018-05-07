@@ -14,7 +14,7 @@ namespace HackathonManager.Cli
             Console.WriteLine("Add new mentors to the system:");
             var mentor = new DTO.Mentor();
             Console.WriteLine("Name:");
-            mentor.Name = Console.ReadLine();
+            mentor.FirstName = Console.ReadLine();
             Console.WriteLine("Age(accepts integer):");
             mentor.Age = int.Parse(Console.ReadLine());
             Console.WriteLine("Description:");

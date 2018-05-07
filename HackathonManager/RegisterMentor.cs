@@ -24,10 +24,10 @@ namespace HackathonManager
         {
             _Repository.Add(mentor);
 
-            var mentorFromDb = _Repository.Single<DTO.Mentor>(x => x.Name == mentor.Name);
+            var mentorFromDb = _Repository.Single<DTO.Mentor>(x => x.FirstName == mentor.FirstName);
 
             _SmsService.SendSms(uint.Parse(mentorFromDb.PhoneNumber),
-            $"🔥 {mentorFromDb.Name}, you've been added in and registered as a mentor for this event. 🔥" +
+            $"🔥 {mentorFromDb.FirstName}, you've been added in and registered as a mentor for this event. 🔥" +
 
             $"\n\nYou'll recieve prompts via sms from here out for your instructions. " +
             $"After finishing a mentoring task it will be your responsability to" +
@@ -36,7 +36,7 @@ namespace HackathonManager
             $"\n\nIf you don't set yourself as FINISHED within the first 20 min you will" +
             $"be prompted to see if you're done every 5 minutes there out until you are.");
 
-            Console.WriteLine($"Introductory sms sent to {mentor.Name} at {mentor.PhoneNumber}.");
+            Console.WriteLine($"Introductory sms sent to {mentor.FirstName} at {mentor.PhoneNumber}.");
             Console.ReadKey();
         }
     }
