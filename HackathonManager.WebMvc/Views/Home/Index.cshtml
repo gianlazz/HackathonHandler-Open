@@ -80,21 +80,21 @@
 {
     if (i > 0 && i % 3 == 0)
     {
-        @:</div><div class="row">
-            // close and start new row
-        }
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top" src="@Model[i].Image" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">@Model[i].FirstName</h5>
-                                <p class="card-text">@Model[i].Description</p>
-                                <button type="button" class="@(Model[i].IsAvailable ? "btn btn-primary" : "btn btn-outline-secondary")" data-toggle="modal" data-target="@(Model[i].IsAvailable ? "#exampleModalCenter" : "")">
-                                    @(Model[i].IsAvailable ? "Request Their Assistance" : "Currently Unavailable")
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-    }
+        @:</div><br /><div class="row">
+    // close and start new row
+}
+<div class="col-md-4">
+    <div class="card">
+        <img class="card-img-top" src="@Model[i].Image" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@Model[i].FirstName</h5>
+            <p class="card-text">@Model[i].Description</p>
+            <button type="button" class="@(Model[i].IsAvailable ? "btn btn-primary" : "btn btn-outline-secondary")" data-toggle="modal" data-target="@(Model[i].IsAvailable ? "#exampleModalCenter" : "")">
+                @(Model[i].IsAvailable ? "Request Their Assistance" : "Currently Unavailable")
+            </button>
+        </div>
+    </div>
+</div>
+}
 </div>
 <br /> 
