@@ -43,5 +43,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SrndMentorCsvDtoConverter.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HackathonManager\HackathonManager.csproj">
+      <Project>{afcf5d64-16ac-46f6-b220-3bb02e72cbb7}</Project>
+      <Name>HackathonManager</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
