@@ -47,5 +47,19 @@ seattle-eastside,vip,Legere,John,john.legere@t-mobile.com,,,0.00,,,,,,2018-05-04
             //Assert
             Assert.That(() => mentors.Count == 22);
         }
+
+        [Test]
+        public void Mentor1ShouldHaveThereNameValuesCorrect()
+        {
+            //Arrange
+            var converter = new SrndMentorCsvDtoConverter();
+
+            //Act
+            var mentors = converter.Parse(_csv);
+
+            //Assert
+            Assert.That(() => mentors[0].FirstName == "Derek");
+            Assert.That(() => mentors[0].LastName == "Carlson");
+        }
     }
 }

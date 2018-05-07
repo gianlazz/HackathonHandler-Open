@@ -42,16 +42,21 @@ namespace HackathonManager
                 }
             }
 
-            foreach (var mentor in mentorCsvLines)
+            foreach (var line in mentorCsvLines)
             {
-                mentors.Add(new Mentor
+                var lineValues = line.Split(',').ToArray();
+                var mentor = new Mentor()
                 {
-                    GuidId = new Guid
-
-                });
+                    GuidId = Guid.NewGuid(),
+                    FirstName = lineValues[3],
+                    LastName = lineValues[2],
+                    Age = (lineValues[5] != string.Empty) ? int.Parse(lineValues[5]) : 0,
+                    Email = lineValues[4]
+                };
+                mentors.Add(mentor);
             }
 
-            return null;
+            return mentors;
         }
     }
 }
