@@ -15,24 +15,24 @@ namespace HackathonManager.Tests
     [TestFixture]
     public class IncomingSmsHandlerTests
     {
-        [Test]
-        public void test()
-        {
-            //Arrange
-            var smsMock = MockSmsService();
-            var repositoryMock = MockRepository();
-            var loggerMock = MockLogger();
-            var incomingSmsHandler = new IncomingSmsHandler(smsMock.Object, repositoryMock.Object, loggerMock.Object);
-            var recievedSms = new SmsDto();
-            recievedSms.FromPhoneNumber = "5555555555";
-            recievedSms.ToPhoneNumber = "2222222222";
+        //[Test]
+        //public void test()
+        //{
+        //    //Arrange
+        //    var smsMock = MockSmsService();
+        //    var repositoryMock = MockRepository();
+        //    var loggerMock = MockLogger();
+        //    var incomingSmsHandler = new IncomingSmsHandler(smsMock.Object, repositoryMock.Object, loggerMock.Object);
+        //    var recievedSms = new SmsDto();
+        //    recievedSms.FromPhoneNumber = "5555555555";
+        //    recievedSms.ToPhoneNumber = "2222222222";
 
-            //Act
-            incomingSmsHandler.Process(recievedSms);
+        //    //Act
+        //    incomingSmsHandler.Process(recievedSms);
 
-            //Assert
-            //Assert.That(() smsMock.);
-        }
+        //    //Assert
+        //    //Assert.That(() smsMock.);
+        //}
 
         #region Helper Methods
         private Mock<IRepository> MockRepository()

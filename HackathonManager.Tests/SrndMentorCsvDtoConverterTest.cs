@@ -61,5 +61,18 @@ seattle-eastside,vip,Legere,John,john.legere@t-mobile.com,,,0.00,,,,,,2018-05-04
             Assert.That(() => mentors[0].FirstName == "Derek");
             Assert.That(() => mentors[0].LastName == "Carlson");
         }
+
+        [Test]
+        public void Mentor1ShouldHaveTheCorrectEventValue()
+        {
+            //Arrange
+            var converter = new SrndMentorCsvDtoConverter();
+
+            //Act
+            var mentors = converter.Parse(_csv);
+
+            //Assert
+            Assert.That(() => mentors[0].Event == "seattle-eastside");
+        }
     }
 }

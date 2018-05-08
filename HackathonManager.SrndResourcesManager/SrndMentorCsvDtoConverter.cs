@@ -51,7 +51,9 @@ namespace HackathonManager
                     FirstName = lineValues[3],
                     LastName = lineValues[2],
                     Age = (lineValues[5] != string.Empty) ? int.Parse(lineValues[5]) : 0,
-                    Email = lineValues[4]
+                    Email = lineValues[4],
+                    Event = lineValues[0],
+                    MentorType = lineValues[1]
                 };
                 mentors.Add(mentor);
             }

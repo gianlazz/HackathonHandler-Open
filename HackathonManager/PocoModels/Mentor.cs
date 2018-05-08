@@ -19,5 +19,6 @@ namespace HackathonManager.DTO
         public string Email { get; set; }
         public bool IsAvailable { get; set; }
         public bool IsPresent { get; set; }
+        public string MentorType { get; set; }
     }
 }
