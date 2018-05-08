@@ -39,7 +39,7 @@ seattle-eastside,vip,Legere,John,john.legere@t-mobile.com,,,0.00,,,,,,2018-05-04
         public void ThereShouldBe22MentorsReturned()
         {
             //Arrange
-            var converter = new SrndMentorCsvDtoConverter();
+            var converter = new SrndMentorCsvParser();
 
             //Act
             var mentors = converter.Parse(_csv);
@@ -52,7 +52,7 @@ seattle-eastside,vip,Legere,John,john.legere@t-mobile.com,,,0.00,,,,,,2018-05-04
         public void Mentor1ShouldHaveThereNameValuesCorrect()
         {
             //Arrange
-            var converter = new SrndMentorCsvDtoConverter();
+            var converter = new SrndMentorCsvParser();
 
             //Act
             var mentors = converter.Parse(_csv);
@@ -66,10 +66,23 @@ seattle-eastside,vip,Legere,John,john.legere@t-mobile.com,,,0.00,,,,,,2018-05-04
         public void Mentor1ShouldHaveTheCorrectEventValue()
         {
             //Arrange
-            var converter = new SrndMentorCsvDtoConverter();
+            var converter = new SrndMentorCsvParser();
 
             //Act
             var mentors = converter.Parse(_csv);
+
+            //Assert
+            Assert.That(() => mentors[0].Event == "seattle-eastside");
+        }
+
+        [Test]
+        public void ParseFromSrndOnline()
+        {
+            //Arrange
+            var converter = new SrndMentorCsvParser();
+
+            //Act
+            var mentors = converter.ParseFromSrndOnline();
 
             //Assert
             Assert.That(() => mentors[0].Event == "seattle-eastside");

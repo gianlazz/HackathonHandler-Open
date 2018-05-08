@@ -41,7 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SrndMentorCsvDtoConverter.cs" />
+    <Compile Include="SrndMentorCsvDownloader.cs" />
+    <Compile Include="SrndMentorCsvParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HackathonManager\HackathonManager.csproj">
