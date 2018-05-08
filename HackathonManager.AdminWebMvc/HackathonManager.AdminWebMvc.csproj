@@ -144,6 +144,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MentorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -190,6 +191,11 @@
     <Content Include="Views\Home\Sms.cshtml" />
     <Content Include="Views\Home\Teams.cshtml" />
     <Content Include="Views\Home\Judges.cshtml" />
+    <Content Include="Views\Mentors\Index.cshtml" />
+    <Content Include="Views\Mentors\Details.cshtml" />
+    <Content Include="Views\Mentors\Create.cshtml" />
+    <Content Include="Views\Mentors\Edit.cshtml" />
+    <Content Include="Views\Mentors\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
