@@ -62,11 +62,13 @@ namespace HackathonManager.AdminWebMvc.Controllers
 
         // POST: Mentors/Edit/5
         [HttpPost]
-        public ActionResult Edit(Guid id, FormCollection collection)
+        public ActionResult Edit(Mentor mentor)
         {
             try
             {
                 // TODO: Add update logic here
+                _repo.Delete<Mentor>(x => x.GuidId == mentor.GuidId);
+                _repo.Add<Mentor>(mentor);
 
                 return RedirectToAction("Index");
             }
@@ -84,7 +86,7 @@ namespace HackathonManager.AdminWebMvc.Controllers
 
         // POST: Mentors/Delete/5
         [HttpPost]
-        public ActionResult Delete(Guid id, FormCollection collection)
+        public ActionResult Delete(Mentor mentor)
         {
             try
             {

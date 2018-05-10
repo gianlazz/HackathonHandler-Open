@@ -1,7 +1,20 @@
-﻿
+﻿@model HackathonManager.DTO.Mentor
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Edit @Model.FirstName</h2>
 
+@using (Html.BeginForm("Edit", "Mentors", FormMethod.Post, new { transaction = Model }))
+{
+    foreach (var prop in ViewData.ModelMetadata.Properties)
+    {
+        <div class="form-group">
+            @Html.Label(prop.PropertyName)
+            @Html.Editor(prop.PropertyName, new { attributes = new { @class = "form-control" } })
+        </div>
+    }
+    <p>
+        <input class="btn btn-primary" type="submit" value="Save" />
+    </p>
+}
