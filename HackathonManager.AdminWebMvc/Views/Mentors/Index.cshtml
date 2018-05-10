@@ -4,17 +4,23 @@
     var properties = typeof(HackathonManager.DTO.Mentor).GetProperties();
 }
 
-<h2>Index</h2>
+<h2>Mentors</h2>
 
-Number of mentors: @Model.Count()
+<p>Number of mentors: @Model.Count()</p>
 
+<button type="button" class="btn btn-primary">Add New</button>
+<button type="button" class="btn btn-primary">Pull Mentors From SRND</button>
+
+@using (Html.BeginForm())
+{
 <table class="table table-hover">
     <thead>
         <tr>
-            @{ 
+            <td></td>
+            @{
                 foreach (var property in properties)
                 {
-            <th>@property.Name</th>
+                    <th>@property.Name</th>
                 }
             }
         </tr>
@@ -23,13 +29,15 @@ Number of mentors: @Model.Count()
         @{
             foreach (var mentor in Model)
             {
-                <tr>
-                    @foreach (var value in mentor.GetType().GetProperties())
-                    {
-                        <td>@value.GetValue(mentor, null)</td>
-                    }
-                </tr>
-            }
+        <tr>
+            <td><input type="submit" value="Edit" class="btn btn-primary" /></td>
+            @foreach (var value in mentor.GetType().GetProperties())
+    {
+        <td>@value.GetValue(mentor, null)</td>
+}
+        </tr>
         }
-    </tbody>
-</table>
+        }
+        </tbody>
+    </table>
+}
