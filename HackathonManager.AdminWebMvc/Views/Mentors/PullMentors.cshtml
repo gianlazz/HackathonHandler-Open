@@ -1,0 +1,38 @@
+﻿@model List<HackathonManager.DTO.Mentor>
+@{
+    ViewBag.Title = "PullMentors";
+    var properties = typeof(HackathonManager.DTO.Mentor).GetProperties();
+}
+
+<h2>Pull Mentors Srnd' "Clear" Backend</h2>
+
+@using (Html.BeginForm())
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td></td>
+                @{
+                    foreach (var property in properties)
+                    {
+                        <th>@property.Name</th>
+                    }
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var mentor in Model)
+                {
+                    <tr>
+                        <td><a class="btn btn-primary" href="/Mentors/Edit?id=@mentor.GuidId">Edit</a></td>
+                        @foreach (var value in mentor.GetType().GetProperties())
+                        {
+                            <td>@value.GetValue(mentor, null)</td>
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}

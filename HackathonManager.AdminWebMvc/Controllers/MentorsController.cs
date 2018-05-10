@@ -7,6 +7,7 @@ using HackathonManager.DTO;
 using HackathonManager.PocoModels;
 using HackathonManager.RepositoryPattern;
 
+
 namespace HackathonManager.AdminWebMvc.Controllers
 {
     public class MentorsController : Controller
@@ -24,6 +25,14 @@ namespace HackathonManager.AdminWebMvc.Controllers
         public ActionResult Details(Guid id)
         {
             return View();
+        }
+
+        public ActionResult PullMentors()
+        {
+            var downloader = new HackathonManager.SrndResourcesManager.SrndMentorCsvDownloader();
+            var parser = new HackathonManager.SrndMentorCsvParser();
+            var result = parser.Parse(downloader.GetCsv());
+            return View(result);
         }
 
         // GET: Mentors/Create
