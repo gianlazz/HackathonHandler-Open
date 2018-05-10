@@ -5,17 +5,17 @@ using System.Web;
 using System.Web.Mvc;
 using HackathonManager.DTO;
 using HackathonManager.PocoModels;
+using HackathonManager.RepositoryPattern;
 
 namespace HackathonManager.AdminWebMvc.Controllers
 {
     public class MentorsController : Controller
     {
-
+        private IRepository _repo = MvcApplication.DbRepo;
         // GET: Mentors
         public ActionResult Index()
         {
-            var repo = MvcApplication.DbRepo;
-            var mentors = repo.All<Mentor>().ToList();
+            var mentors = _repo.All<Mentor>().ToList();
 
             return View(mentors);
         }
@@ -51,7 +51,13 @@ namespace HackathonManager.AdminWebMvc.Controllers
         // GET: Mentors/Edit/5
         public ActionResult Edit(Guid id)
         {
-            return View();
+            Mentor mentor;
+            if (id == Guid.Empty)
+                mentor = _repo.All<Mentor>().Where(x => x.GuidId == null).ToList().First();
+            else
+                mentor = _repo.All<Mentor>().Where(x => x.GuidId == id).ToList().First();
+
+            return View(mentor);
         }
 
         // POST: Mentors/Edit/5
