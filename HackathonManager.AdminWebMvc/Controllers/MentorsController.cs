@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HackathonManager.DTO;
+using HackathonManager.PocoModels;
 
 namespace HackathonManager.AdminWebMvc.Controllers
 {
     public class MentorsController : Controller
     {
+
         // GET: Mentors
         public ActionResult Index()
         {
-            return View();
+            var repo = MvcApplication.DbRepo;
+            var mentors = repo.All<Mentor>().ToList();
+
+            return View(mentors);
         }
 
         // GET: Mentors/Details/5
