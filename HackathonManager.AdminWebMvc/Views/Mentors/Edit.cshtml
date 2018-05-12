@@ -21,5 +21,11 @@
 
 @using (Html.BeginForm("Delete", "Mentors", FormMethod.Post, new { transaction = Model }))
 {
+    foreach (var prop in ViewData.ModelMetadata.Properties)
+    {
+        <div class="form-group">
+            @Html.Hidden(prop.PropertyName)
+        </div>
+    }
     <input class="btn btn-primary" type="submit" value="Delete" />
 }

@@ -68,8 +68,13 @@ namespace HackathonManager.MongoDB
 
         public void Delete<T>(T item) where T : class, new()
         {
+            //WorkAround for DeleteOne parameter
+            ObjectFilterDefinition<T> filter = new ObjectFilterDefinition<T>(item);
             // Remove the object.
-            _db.GetCollection<T>(typeof(T).Name).DeleteOneAsync(typeof(T).Name);
+            _db.GetCollection<T>(typeof(T).Name).FindOneAndDelete(filter);
+            //// Remove the object.
+            //_db.GetCollection<T>(typeof(T).Name).DeleteOneAsync(typeof(T).Name);
+            //_db.GetCollection<T>(typeof(T).Name).FindOneAndDelete((typeof(T).Name) => )
         }
 
         public void DeleteAll<T>() where T : class, new()

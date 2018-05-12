@@ -109,7 +109,7 @@ namespace HackathonManager.AdminWebMvc.Controllers
             try
             {
                 // TODO: Add delete logic here
-                _repo.Delete<Mentor>(x => x.GuidId == mentor.GuidId);
+                _repo.Delete(mentor);
                 return RedirectToAction("Index");
             }
             catch
