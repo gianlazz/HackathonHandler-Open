@@ -18,3 +18,8 @@
         <input class="btn btn-primary" type="submit" value="Save" />
     </p>
 }
+
+@using (Html.BeginForm("Delete", "Mentors", FormMethod.Post, new { transaction = Model }))
+{
+    <input class="btn btn-primary" type="submit" value="Delete" />
+}

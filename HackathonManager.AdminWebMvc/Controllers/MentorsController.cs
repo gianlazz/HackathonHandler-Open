@@ -45,7 +45,7 @@ namespace HackathonManager.AdminWebMvc.Controllers
             {
                 _repo.Add<Mentor>(newMentor);
             }
-            return View();
+            return RedirectToAction("Index");
         }
 
         // GET: Mentors/Create
@@ -107,7 +107,7 @@ namespace HackathonManager.AdminWebMvc.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                _repo.Delete<Mentor>(x => x.GuidId == mentor.GuidId);
                 return RedirectToAction("Index");
             }
             catch
