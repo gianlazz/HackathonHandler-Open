@@ -59,7 +59,7 @@ namespace HackathonManager.MongoDB
 
         public void Delete<T>(Expression<Func<T, bool>> expression) where T : class, new()
         {
-            var items = All<T>().Where(expression);
+            var items = All<T>().Where(expression).ToList();
             foreach (T item in items)
             {
                 Delete(item);

@@ -17,14 +17,16 @@ namespace HackathonManager.AdminWebMvc.Controllers
         // GET: Mentors
         public ActionResult Index()
         {
+            var mentors = _repo.All<Mentor>().ToList();
+
             var downloader = new HackathonManager.SrndResourcesManager.SrndMentorCsvDownloader();
             var parser = new HackathonManager.SrndMentorCsvParser();
-            var result = parser.Parse(downloader.GetCsv());
-            _srndMentors = result.Where(x => x.MentorType.ToLower().Trim() == "mentor").ToList();
+            var newMentors = parser.Parse(downloader.GetCsv());
+            _srndMentors = newMentors.Where(x => x.MentorType.ToLower().Trim() == "mentor").ToList();
+
+            var areNewMentors = !_srndMentors.Except(mentors).Any();
 
             ViewBag.MentorsToPull = _srndMentors.Count();
-
-            var mentors = _repo.All<Mentor>().ToList();
 
             return View(mentors);
         }
