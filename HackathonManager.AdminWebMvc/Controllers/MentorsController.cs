@@ -44,6 +44,12 @@ namespace HackathonManager.AdminWebMvc.Controllers
             return View(result);
         }
 
+        [HttpPost]
+        public ActionResult PullMentors(List<Mentor> pulledMentors)
+        {
+            return View();
+        }
+
         // GET: Mentors/Create
         public ActionResult Create()
         {
