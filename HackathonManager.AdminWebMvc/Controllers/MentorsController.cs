@@ -13,9 +13,17 @@ namespace HackathonManager.AdminWebMvc.Controllers
     public class MentorsController : Controller
     {
         private IRepository _repo = MvcApplication.DbRepo;
+        private List<Mentor> _srndMentors;
         // GET: Mentors
         public ActionResult Index()
         {
+            var downloader = new HackathonManager.SrndResourcesManager.SrndMentorCsvDownloader();
+            var parser = new HackathonManager.SrndMentorCsvParser();
+            var result = parser.Parse(downloader.GetCsv());
+            _srndMentors = result.Where(x => x.MentorType.ToLower().Trim() == "mentor").ToList();
+
+            ViewBag.MentorsToPull = _srndMentors.Count();
+
             var mentors = _repo.All<Mentor>().ToList();
 
             return View(mentors);
