@@ -29,12 +29,6 @@ namespace HackathonManager.AdminWebMvc.Controllers
             return View(mentors);
         }
 
-        // GET: Mentors/Details/5
-        public ActionResult Details(Guid id)
-        {
-            return View();
-        }
-
         public ActionResult PullMentors()
         {
             var downloader = new HackathonManager.SrndResourcesManager.SrndMentorCsvDownloader();
@@ -47,6 +41,10 @@ namespace HackathonManager.AdminWebMvc.Controllers
         [HttpPost]
         public ActionResult PullMentors(List<Mentor> pulledMentors)
         {
+            foreach (var newMentor in pulledMentors)
+            {
+                _repo.Add<Mentor>(newMentor);
+            }
             return View();
         }
 
@@ -100,12 +98,6 @@ namespace HackathonManager.AdminWebMvc.Controllers
             {
                 return View();
             }
-        }
-
-        // GET: Mentors/Delete/5
-        public ActionResult Delete(Guid id)
-        {
-            return View();
         }
 
         // POST: Mentors/Delete/5
