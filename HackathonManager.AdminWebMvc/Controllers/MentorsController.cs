@@ -32,6 +32,7 @@ namespace HackathonManager.AdminWebMvc.Controllers
             var downloader = new HackathonManager.SrndResourcesManager.SrndMentorCsvDownloader();
             var parser = new HackathonManager.SrndMentorCsvParser();
             var result = parser.Parse(downloader.GetCsv());
+            result = result.Where(x => x.MentorType.ToLower().Trim() == "mentor").ToList();
             return View(result);
         }
 

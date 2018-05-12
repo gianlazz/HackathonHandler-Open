@@ -5,13 +5,13 @@
 }
 
 <h2>Pull Mentors Srnd' "Clear" Backend</h2>
-
+<br />
+<h4>Entities Not Found In HackathonHandler Database: </h4>
 @using (Html.BeginForm())
 {
     <table class="table table-hover">
         <thead>
             <tr>
-                <td></td>
                 @{
                     foreach (var property in properties)
                     {
@@ -25,7 +25,6 @@
                 foreach (var mentor in Model)
                 {
                     <tr>
-                        <td><a class="btn btn-primary" href="/Mentors/Edit?id=@mentor.GuidId">Edit</a></td>
                         @foreach (var value in mentor.GetType().GetProperties())
                         {
                             <td>@value.GetValue(mentor, null)</td>
