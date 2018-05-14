@@ -53,7 +53,8 @@ namespace HackathonManager.AdminWebMvc.Controllers
         // GET: Mentors/Create
         public ActionResult Create()
         {
-            return View();
+            var mentor = new Mentor();
+            return View(mentor);
         }
 
         // POST: Mentors/Create

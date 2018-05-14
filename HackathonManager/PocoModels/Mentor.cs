@@ -8,6 +8,8 @@ namespace HackathonManager.DTO
 {
     public class Mentor
     {
+        //public System.Guid GuidId { get; set { this.GuidId = Guid.NewGuid(); } }
+        //public Guid GuidId { get; set; } = Guid.NewGuid();
         public System.Guid GuidId { get; set; }
         public string Event { get; set; }
         public string FirstName { get; set; }
@@ -20,5 +22,10 @@ namespace HackathonManager.DTO
         public bool IsAvailable { get; set; }
         public bool IsPresent { get; set; }
         public string MentorType { get; set; }
+
+        public Mentor()
+        {
+            GuidId = Guid.NewGuid();
+        }
     }
 }
