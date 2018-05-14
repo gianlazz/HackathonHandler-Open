@@ -1,0 +1,36 @@
+﻿@model List<HackathonManager.DTO.SmsDto>
+@{
+    ViewBag.Title = "Index";
+    var properties = typeof(HackathonManager.DTO.SmsDto).GetProperties();
+}
+
+<h2>Sms Log</h2>
+
+@using (Html.BeginForm())
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                @{
+                    foreach (var property in properties)
+                    {
+                        <th>@property.Name</th>
+                    }
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var sms in Model)
+                {
+                    <tr>
+                        @foreach (var value in sms.GetType().GetProperties())
+                        {
+                            <td>@value.GetValue(sms, null)</td>
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
