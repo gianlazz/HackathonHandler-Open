@@ -43,8 +43,9 @@ namespace HackathonManager.AdminWebMvc.Controllers
         }
 
         // GET: Judges/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
+
             return View();
         }
 
