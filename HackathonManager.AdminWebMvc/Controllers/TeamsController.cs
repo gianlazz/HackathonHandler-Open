@@ -1,39 +1,40 @@
-﻿using System;
+﻿using HackathonManager.RepositoryPattern;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HackathonManager.PocoModels;
 
 namespace HackathonManager.AdminWebMvc.Controllers
 {
     public class TeamsController : Controller
     {
+        private IRepository _repo = MvcApplication.DbRepo;
+
         // GET: Teams
         public ActionResult Index()
         {
-            return View();
-        }
+            var teams = _repo.All<Team>().ToList();
 
-        // GET: Teams/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+            return View(teams);
         }
 
         // GET: Teams/Create
         public ActionResult Create()
         {
-            return View();
+            var team = new Team();
+            return View(team);
         }
 
         // POST: Teams/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Team team)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                _repo.Add<Team>(team);
                 return RedirectToAction("Index");
             }
             catch
@@ -43,18 +44,26 @@ namespace HackathonManager.AdminWebMvc.Controllers
         }
 
         // GET: Teams/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
-            return View();
+            Team team;
+            if (id == Guid.Empty)
+                team = _repo.All<Team>().Where(x => x.GuidId == null).ToList().First();
+            else
+                team = _repo.All<Team>().Where(x => x.GuidId == id).ToList().First();
+
+            return View(team);
         }
 
         // POST: Teams/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Team team)
         {
             try
             {
                 // TODO: Add update logic here
+                _repo.Delete<Team>(x => x.GuidId == team.GuidId);
+                _repo.Add<Team>(team);
 
                 return RedirectToAction("Index");
             }
@@ -64,20 +73,14 @@ namespace HackathonManager.AdminWebMvc.Controllers
             }
         }
 
-        // GET: Teams/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
         // POST: Teams/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Team team)
         {
             try
             {
                 // TODO: Add delete logic here
-
+                _repo.Delete(team);
                 return RedirectToAction("Index");
             }
             catch

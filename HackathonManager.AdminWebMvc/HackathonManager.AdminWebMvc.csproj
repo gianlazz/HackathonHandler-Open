@@ -203,6 +203,8 @@
     <Content Include="Views\Judges\Index.cshtml" />
     <Content Include="Views\Judges\Create.cshtml" />
     <Content Include="Views\Judges\Edit.cshtml" />
+    <Content Include="Views\Teams\Edit.cshtml" />
+    <Content Include="Views\Teams\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

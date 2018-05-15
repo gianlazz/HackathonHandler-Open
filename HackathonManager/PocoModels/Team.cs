@@ -8,7 +8,7 @@ namespace HackathonManager.PocoModels
 {
     public class Team
     {
-        public System.Guid Id { get; set; }
+        public System.Guid GuidId { get; set; }
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
         public string Location { get; set; }
@@ -24,5 +24,10 @@ namespace HackathonManager.PocoModels
         //    //Random random = new Random();
         //    PinNumber = random.Next(0000, 9999);
         //}
+
+        public Team()
+        {
+            GuidId = Guid.NewGuid();
+        }
     }
 }

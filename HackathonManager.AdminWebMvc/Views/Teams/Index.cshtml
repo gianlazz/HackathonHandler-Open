@@ -1,7 +1,40 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿@model List<HackathonManager.PocoModels.Team>
+    @{
+        ViewBag.Title = "Index";
+        var properties = typeof(HackathonManager.PocoModels.Team).GetProperties();
+    }
 
-<h2>Teams</h2>
+    <h2>Teams</h2>
 
+    <a class="btn btn-primary" href="/Teams/Create">Add New</a>
+
+    @using (Html.BeginForm())
+    {
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td></td>
+                    @{
+                        foreach (var property in properties)
+                        {
+                            <th>@property.Name</th>
+                        }
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var judge in Model)
+                    {
+                        <tr>
+                            <td><a class="btn btn-primary" href="/Teams/Edit?id=@judge.GuidId">Edit</a></td>
+                            @foreach (var value in judge.GetType().GetProperties())
+                            {
+                                <td>@value.GetValue(judge, null)</td>
+                            }
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
