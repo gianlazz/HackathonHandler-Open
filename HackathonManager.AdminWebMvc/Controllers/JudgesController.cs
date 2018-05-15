@@ -19,12 +19,6 @@ namespace HackathonManager.AdminWebMvc.Controllers
             return View(judges);
         }
 
-        // GET: Judges/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Judges/Create
         public ActionResult Create()
         {
@@ -51,17 +45,24 @@ namespace HackathonManager.AdminWebMvc.Controllers
         // GET: Judges/Edit/5
         public ActionResult Edit(Guid id)
         {
+            Judge judge;
+            if (id == Guid.Empty)
+                judge = _repo.All<Judge>().Where(x => x.GuidId == null).ToList().First();
+            else
+                judge = _repo.All<Judge>().Where(x => x.GuidId == id).ToList().First();
 
-            return View();
+            return View(judge);
         }
 
         // POST: Judges/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Judge judge)
         {
             try
             {
                 // TODO: Add update logic here
+                _repo.Delete<Judge>(x => x.GuidId == judge.GuidId);
+                _repo.Add<Judge>(judge);
 
                 return RedirectToAction("Index");
             }
@@ -71,20 +72,14 @@ namespace HackathonManager.AdminWebMvc.Controllers
             }
         }
 
-        // GET: Judges/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
         // POST: Judges/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Judge judge)
         {
             try
             {
                 // TODO: Add delete logic here
-
+                _repo.Delete(judge);
                 return RedirectToAction("Index");
             }
             catch
