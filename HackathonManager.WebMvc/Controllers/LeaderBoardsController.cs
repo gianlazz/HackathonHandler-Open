@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace HackathonManager.WebMvc.Controllers
 {
-    public class LeaderBoardsController : Controller
+    public class LeaderboardsController : Controller
     {
-        // GET: LeaderBoards
+        // GET: Leaderboards
         public ActionResult Index()
         {
             return View();
