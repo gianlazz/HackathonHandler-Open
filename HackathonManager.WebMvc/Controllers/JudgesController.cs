@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HackathonManager.RepositoryPattern;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,13 @@ namespace HackathonManager.WebMvc.Controllers
 {
     public class JudgesController : Controller
     {
+        private IRepository _Db = MvcApplication.DbRepo;
+
         // GET: Judges
         public ActionResult Index()
         {
-            return View();
+            var judges = _Db.All<Judge>();
+            return View(judges);
         }
 
         // GET: Judges/Details/5
