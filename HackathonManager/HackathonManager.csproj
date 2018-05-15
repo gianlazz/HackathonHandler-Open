@@ -42,15 +42,15 @@
   <ItemGroup>
     <Compile Include="ILogger.cs" />
     <Compile Include="IncomingSmsHandler.cs" />
-    <Compile Include="Judge.cs" />
+    <Compile Include="Models\Judge.cs" />
     <Compile Include="Logger.cs" />
-    <Compile Include="PocoModels\Mentor.cs" />
-    <Compile Include="PocoModels\SmsDto.cs" />
+    <Compile Include="Models\Mentor.cs" />
+    <Compile Include="Models\SmsDto.cs" />
     <Compile Include="Interfaces\ISmsService.cs" />
-    <Compile Include="PocoModels\Team.cs" />
+    <Compile Include="Models\Team.cs" />
     <Compile Include="RegisterMentor.cs" />
     <Compile Include="RepositoryPattern\IRepository.cs" />
-    <Compile Include="PocoModels\Sms.cs" />
+    <Compile Include="Models\Sms.cs" />
     <Compile Include="RepositoryPattern\Log.cs" />
     <Compile Include="SmsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
