@@ -86,7 +86,14 @@
 <div class="col-md-4">
     <div class="card">
         <!--         <img class="card-img-top" src="@Model[i].Image" alt="Card image cap"> -->
-        <img class="card-img-top" src="~/Content/blank-profile-picture.png" alt="Card image cap">
+        @if(Model[i].Image != null)
+        {
+                    <img class="card-img-top" src="@Model[i].Image" alt="Card image cap">
+        }
+        else
+        {
+                 <img class="card-img-top" src="~/Content/blank-profile-picture.png" alt="Card image cap">       
+        }
         <div class="card-body">
             <h5 class="card-title">@Model[i].FirstName</h5>
             <p class="card-text">@Model[i].Description</p>
