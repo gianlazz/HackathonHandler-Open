@@ -5,11 +5,47 @@
 }
 @model List<HackathonManager.DTO.Mentor>
 
+<div class="background-container">
+    <div class="jumbotron">
+        <h1>Mentors On The Seattle-Eastside Premise</h1>
+        <p class="lead">Browse through the selection of on premise mentors. If they're available you can request their assistance; doing so will send the mentor an sms message alerting them to come meet up with you.</p>
+        <p class="lead">If the mentor accepts the request to help their card will be greyed out until they are finished.</p>
+    </div>
 
-<div class="jumbotron">
-    <h1>Mentors On The Seattle-Eastside Premise</h1>
-    <p class="lead">Browse through the selection of on premise mentors. If they're available you can request their assistance; doing so will send the mentor an sms message alerting them to come meet up with you.</p>
-    <p class="lead">If the mentor accepts the request to help their card will be greyed out until they are finished.</p>
+    <h2>All Mentors In Database</h2>
+    <hr />
+    <div class="row">
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            if (i > 0 && i % 3 == 0)
+            {
+                
+            @:</div><br /><div class="row">
+                // close and start new row
+            }
+            <div class="col-md-4 col-sm-1">
+                <div class="card">
+                    <!--         <img class="card-img-top" src="@Model[i].Image" alt="Card image cap"> -->
+                    @if (Model[i].Image != null)
+                    {
+                        <img class="card-img-top" src="@Model[i].Image" alt="Card image cap">
+                    }
+                    else
+                    {
+                        <img class="card-img-top" src="~/Content/blank-profile-picture.png" alt="Card image cap">
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@Model[i].FirstName</h5>
+                        <p class="card-text">@Model[i].Description</p>
+                        <button type="button" class="@(Model[i].IsAvailable ? "btn btn-primary" : "btn btn-outline-secondary")" data-toggle="modal" data-target="@(Model[i].IsAvailable ? "#initialModalPrompt" : "")">
+                            @(Model[i].IsAvailable ? "Request Their Assistance" : "Currently Unavailable")
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <br />
 </div>
 
 <!-- Trying to prevent youtube autoplay until modal opens then end on hide
@@ -19,7 +55,36 @@
     });
 </script>
 -->
-<!-- Modal -->
+<!-- MODALS -->
+
+<div class="modal fade" id="initialModalPrompt" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Enter your supplied team pin to continue</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Team Pin">
+                        <br />
+                        <small id="emailHelp" class="form-text text-muted">Doing so will allow you to contiue putting in requests on your teams behalf along with seeing updates.</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -72,37 +137,3 @@
         </div>
     </div>
 </div>
-
-<h2>All Mentors In Database</h2>
-<hr />
-<div class="row">
-@for (int i = 0; i < Model.Count; i++)
-{
-    if (i > 0 && i % 3 == 0)
-    {
-        @:</div><br /><div class="row">
-    // close and start new row
-    }
-<div class="col-md-4 col-sm-1">
-    <div class="card">
-        <!--         <img class="card-img-top" src="@Model[i].Image" alt="Card image cap"> -->
-        @if(Model[i].Image != null)
-        {
-                    <img class="card-img-top" src="@Model[i].Image" alt="Card image cap">
-        }
-        else
-        {
-                 <img class="card-img-top" src="~/Content/blank-profile-picture.png" alt="Card image cap">       
-        }
-        <div class="card-body">
-            <h5 class="card-title">@Model[i].FirstName</h5>
-            <p class="card-text">@Model[i].Description</p>
-            <button type="button" class="@(Model[i].IsAvailable ? "btn btn-primary" : "btn btn-outline-secondary")" data-toggle="modal" data-target="@(Model[i].IsAvailable ? "#smsModalCenter" : "")">
-                @(Model[i].IsAvailable ? "Request Their Assistance" : "Currently Unavailable")
-            </button>
-        </div>
-    </div>
-</div>
-}
-</div>
-<br /> 
