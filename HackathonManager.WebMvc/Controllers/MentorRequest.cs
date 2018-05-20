@@ -5,13 +5,13 @@ namespace HackathonManager.WebMvc.Controllers
 {
     public class MentorRequest
     {
-        public Mentor mentor;
-        public Team team;
+        public Mentor Mentor { get; set; }
+        public Team Team { get; set; }
 
         public MentorRequest(Mentor mentor, Team team)
         {
-            this.mentor = mentor;
-            this.team = team;
+            Mentor = mentor;
+            Team = team;
         }
     }
 }
