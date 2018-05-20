@@ -147,6 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JudgesController.cs" />
+    <Compile Include="Controllers\RequestUpdateController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -244,6 +245,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\LeaderBoards\" />
+    <Folder Include="Views\RequestUpdate\" />
     <Folder Include="Views\Teams\" />
   </ItemGroup>
   <ItemGroup>
