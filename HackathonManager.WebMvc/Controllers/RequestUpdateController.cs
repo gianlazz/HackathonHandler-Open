@@ -21,7 +21,9 @@ namespace HackathonManager.WebMvc.Controllers
             //All of these transactions should be handled through a queue and monitored through the
             //Admin page
 
-            return View();
+            var mentorRequest = new MentorRequest(mentor, team);
+
+            return View(mentorRequest);
         }
 
         // GET: RequestUpdate

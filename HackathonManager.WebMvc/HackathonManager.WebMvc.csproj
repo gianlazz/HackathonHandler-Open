@@ -147,6 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JudgesController.cs" />
+    <Compile Include="Controllers\MentorRequest.cs" />
     <Compile Include="Controllers\RequestUpdateController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -240,12 +241,12 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Judges\Index.cshtml" />
+    <Content Include="Views\RequestUpdate\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\LeaderBoards\" />
-    <Folder Include="Views\RequestUpdate\" />
     <Folder Include="Views\Teams\" />
   </ItemGroup>
   <ItemGroup>
