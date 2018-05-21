@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<HackathonManager.Judge>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Judges";
 }
 
 <h2>Index</h2>
@@ -29,12 +29,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsAvailable)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsPresent)
-        </th>
         @*<th></th>*@
     </tr>
 
@@ -57,12 +51,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsAvailable)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsPresent)
         </td>
         @*<td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
