@@ -10,5 +10,8 @@
 <p>Mentor: @Model.Mentor.FirstName</p>
 <p>Team: @Model.Team.Name</p>
 
-<button>Has Arrived</button>
+<p>Accepted: @(Model.Mentor.IsAvailable ? "Contacting Mentor" : "Request Accepted")</p>
+
+<!--If rejected have a message saying unable to reach mentor right now.-->
+<p>@(Model.RequestRejected ? "Unable reach mentor right now" : "")</p>
 

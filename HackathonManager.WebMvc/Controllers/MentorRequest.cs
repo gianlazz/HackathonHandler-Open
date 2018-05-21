@@ -7,6 +7,7 @@ namespace HackathonManager.WebMvc.Controllers
     {
         public Mentor Mentor { get; set; }
         public Team Team { get; set; }
+        public bool RequestRejected { get; set; }
 
         public MentorRequest(Mentor mentor, Team team)
         {
