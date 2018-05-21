@@ -23,12 +23,12 @@ namespace HackathonManager
             _logger = logger;
         }
 
-        public void Process(SmsDto incomingSmsDto)
-        {
-            if (CheckIfTheyreValidUser(incomingSmsDto))
-                return;
-            Isfinished(incomingSmsDto);
-        }
+        //public void Process(SmsDto incomingSmsDto)
+        //{
+        //    if (CheckIfTheyreValidUser(incomingSmsDto))
+        //        return;
+        //    Isfinished(incomingSmsDto);
+        //}
 
         private bool Isfinished(SmsDto incomingSmsDto)
         {
@@ -47,23 +47,23 @@ namespace HackathonManager
             }
         }
 
-        private bool CheckIfTheyreValidUser(SmsDto incomingSms)
-        {
-            try
-            {
-                if (_repo.Single<Mentor>(x => x.PhoneNumber == incomingSms.FromPhoneNumber) != null)
-                    return true;
-                if (_repo.Single<Judge>(x => x.PhoneNumber == incomingSms.FromPhoneNumber) != null)
-                    return true;
-                if (_repo.Single<Team>(x => x.PhoneNumber == incomingSms.FromPhoneNumber) != null)
-                    return true;
-            }
-            catch (Exception exception)
-            {
-                _smsService.SendSms(uint.Parse(incomingSms.FromPhoneNumber), exception.ToString());
-                _logger.Log(exception);
-            }
-            return false;
-        }
+        //private bool CheckIfTheyreValidUser(SmsDto incomingSms)
+        //{
+        //    try
+        //    {
+        //        if (_repo.Single<Mentor>(x => x.PhoneNumber == incomingSms.FromPhoneNumber) != null)
+        //            return true;
+        //        if (_repo.Single<Judge>(x => x.PhoneNumber == incomingSms.FromPhoneNumber) != null)
+        //            return true;
+        //        if (_repo.Single<Team>(x => x.PhoneNumber == incomingSms.FromPhoneNumber) != null)
+        //            return true;
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        _smsService.SendSms(uint.Parse(incomingSms.FromPhoneNumber), exception.ToString());
+        //        _logger.Log(exception);
+        //    }
+        //    return false;
+        //}
     }
 }

@@ -10,7 +10,7 @@ namespace HackathonManager.PocoModels
     {
         public System.Guid GuidId { get; set; }
         public string Name { get; set; }
-        public string PhoneNumber { get; set; }
+        //public string PhoneNumber { get; set; }
         public string Location { get; set; }
         public int PinNumber { get; set; }
 

@@ -11,7 +11,7 @@ namespace HackathonManager
         public string Image { get; set; }
         public string ProfessionalTitle { get; set; }
         public string Description { get; set; }
-        public string PhoneNumber { get; set; }
+        //public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public bool IsAvailable { get; set; }
         public bool IsPresent { get; set; }
