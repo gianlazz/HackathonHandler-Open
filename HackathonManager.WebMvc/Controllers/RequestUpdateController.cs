@@ -44,7 +44,7 @@ namespace HackathonManager.WebMvc.Controllers
             for (int i = 0; i <= itemsCount; i++)
             {
                 //SIMULATING SOME TASK
-                Thread.Sleep(500);
+                Thread.Sleep(250);
 
                 //CALLING A FUNCTION THAT CALCULATES PERCENTAGE AND SENDS THE DATA TO THE CLIENT
                 Functions.SendProgress("Process in progress...", i, itemsCount);

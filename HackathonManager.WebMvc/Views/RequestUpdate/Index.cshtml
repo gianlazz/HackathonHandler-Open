@@ -15,39 +15,24 @@
 <!--If rejected have a message saying unable to reach mentor right now.-->
 <p>@(Model.RequestRejected ? "Unable reach mentor right now" : "")</p>
 
-<script type="text/javascript">
-    $(function () {
+<button onclick="StartProcess()" type="button" class="btn btn-primary btn-success">Start the process</button>
 
-        // Reference the auto-generated proxy for the hub.
-        var progress = $.connection.progressHub;
-        console.log(progress);
+<script>
+    //CALLING METHOD IN THE CONTROLLER TO DO SOME WORK
+    function StartProcess() {
 
-        // Create a function that the hub can call back to display messages.
-        progress.client.addProgress = function (message, percentage) {
-            //at this point server side had send message and percentage back to the client
-            //and then we handle progress bar any way we want it
+        $.getJSON("/RequestUpdate/LongRunningProcess",
+            {},
+            function (data) {
+                if (!data) {
+                    alert("Success");
+                }
+                else {
+                    alert(data);
+                }
+            });
+    }
 
-            //Using a function in Helper.js file we show modal and display text and percentage
-            ProgressBarModal("show", message + " " + percentage);
-
-            //We're filling blue progress indicator by setting the width property to the variable
-            //that was returned from the server
-            $('#ProgressMessage').width(percentage);
-
-            //closing modal when the progress gets to 100%
-            if (percentage == "100%") {
-                ProgressBarModal();
-            }
-        };
-
-        //Before doing anything with our hub we must start it
-        $.connection.hub.start().done(function () {
-
-            //getting the connection ID in case you want to display progress to the specific user
-            //that started the process in the first place.
-            var connectionId = $.connection.hub.id;
-            console.log(connectionId);
-        });
-
-    });
 </script>
+
+
