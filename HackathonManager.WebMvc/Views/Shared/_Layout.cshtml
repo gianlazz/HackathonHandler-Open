@@ -23,9 +23,9 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <!--
-               <li class="nav-item"><a href="/Account/Register" id="registerLink" class="nav-link">Register</a></li>
-            <li class="nav-item"><a href="/Account/Login" id="loginLink" class="nav-link">Log in</a></li>
-            -->
+                       <li class="nav-item"><a href="/Account/Register" id="registerLink" class="nav-link">Register</a></li>
+                    <li class="nav-item"><a href="/Account/Login" id="loginLink" class="nav-link">Log in</a></li>
+                    -->
                 </ul>
 
             </div>
@@ -66,6 +66,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.signalR-2.2.3.min.js" type="text/javascript"></script>
+    <script src="/signalr/hubs"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
