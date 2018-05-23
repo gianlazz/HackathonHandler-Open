@@ -26,17 +26,43 @@ namespace HackathonManager.WebMvc.Controllers
             return View(model);
         }
 
-        public ActionResult About()
+        public ActionResult SetTeam()
         {
-            ViewBag.Message = "Your application description page.";
+            HttpCookie cookie = Request.Cookies["team"];
+            if (cookie == null)
+            {
+                ViewData["Message"] = "Cookie Not Found";
+                Response.Cookies["team"].Value = "ExampleTeam";
+                Response.Cookies["team"].Expires = DateTime.UtcNow.AddDays(3);
+            }
+            else
+            {
+                return RedirectToAction("Something");
+            }
 
-            return View();
+            return RedirectToAction("Index");
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+        //public ActionResult Index()
+        //{
+        //    HttpCookie cookie = Request.Cookies["temp"];
+        //    if (cookie == null)
+        //    {
+        //        ViewData["Message"] = "Cookie Not Found";
+        //        Response.Cookies["temp"].Value = "This is a cookie: Welcome to ASP.NET MVC!";
+        //        Response.Cookies["temp"].Expires = DateTime.UtcNow.AddDays(3);
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("Something");
+        //    }
+        //    return View();
+        //}
 
+        public ActionResult Something()
+        {
+            HttpCookie cookie = Request.Cookies["temp"];
+            ViewData["Message"] = cookie.Value;
             return View();
         }
     }

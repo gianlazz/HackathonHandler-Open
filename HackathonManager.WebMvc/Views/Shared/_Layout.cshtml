@@ -6,6 +6,13 @@
     <title>@ViewBag.Title - Hackathon Handler</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @{ 
+        string teamCookieValue = "";
+        if (Request.Cookies["team"] != null)
+        {
+            teamCookieValue = Request.Cookies["team"].Value;
+        }
+    }
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
@@ -21,6 +28,7 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item"><p class="nav-justified">Team: @teamCookieValue</p></li>
                     <!--
                        <li class="nav-item"><a href="/Account/Register" id="registerLink" class="nav-link">Register</a></li>
                     <li class="nav-item"><a href="/Account/Login" id="loginLink" class="nav-link">Log in</a></li>
