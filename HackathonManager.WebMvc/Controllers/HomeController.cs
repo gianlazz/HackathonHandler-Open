@@ -36,6 +36,7 @@ namespace HackathonManager.WebMvc.Controllers
             }
             else
             {
+                Response.Cookies["team"].Value = "ExampleTeam";
                 return RedirectToAction("Index");
             }
 
