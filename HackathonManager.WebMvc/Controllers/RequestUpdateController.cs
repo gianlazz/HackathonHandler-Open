@@ -1,12 +1,12 @@
 ﻿using HackathonManager.DTO;
 using HackathonManager.PocoModels;
-using SignalRProgressBarSimpleExample.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using HackathonManager.WebMvc.Util;
 
 namespace HackathonManager.WebMvc.Controllers
 {

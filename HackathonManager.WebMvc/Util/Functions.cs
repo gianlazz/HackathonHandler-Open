@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using HackathonManager.WebMvc.Hubs;
 using Microsoft.AspNet.SignalR;
 using SignalRProgressBarSimpleExample.Hubs;
 
-namespace SignalRProgressBarSimpleExample.Util
+namespace HackathonManager.WebMvc.Util
 {
     public class Functions
     {
@@ -19,6 +20,13 @@ namespace SignalRProgressBarSimpleExample.Util
 
             //PUSHING DATA TO ALL CLIENTS
             hubContext.Clients.All.AddProgress(progressMessage, percentage + "%");
+        }
+
+
+        public static void RequestMentor(bool requestSent, bool requestAccepted, bool requestRejected)
+        {
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<MyHub1>();
+
         }
     }
 }
