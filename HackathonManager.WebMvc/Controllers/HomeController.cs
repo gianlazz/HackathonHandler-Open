@@ -31,13 +31,27 @@ namespace HackathonManager.WebMvc.Controllers
             HttpCookie cookie = Request.Cookies["team"];
             if (cookie == null)
             {
-                ViewData["Message"] = "Cookie Not Found";
                 Response.Cookies["team"].Value = "ExampleTeam";
                 Response.Cookies["team"].Expires = DateTime.UtcNow.AddDays(3);
             }
             else
             {
-                return RedirectToAction("Something");
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult LogOut()
+        {
+            HttpCookie cookie = Request.Cookies["team"];
+            if (cookie != null)
+            {
+                Response.Cookies["team"].Value = "";
+            }
+            else
+            {
+                return RedirectToAction("Index");
             }
 
             return RedirectToAction("Index");
