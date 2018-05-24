@@ -4,6 +4,7 @@ using HackathonManager.PocoModels;
 using HackathonManager.WebMvc.Controllers;
 using Microsoft.AspNet.SignalR;
 using SignalRProgressBarSimpleExample.Hubs;
+using System.Web;
 
 namespace HackathonManager.WebMvc.Util
 {
@@ -32,6 +33,14 @@ namespace HackathonManager.WebMvc.Util
         public static void UpdateTeam(MentorRequest request, string message)
         {
             var hubContext = GlobalHost.ConnectionManager.GetHubContext<ProgressHub>();
+            //Cookie cookie = Context.Request.Cookies["cookieName"];
+            //HttpCookie cookie = HttpContext.Request.Cookies.Get("team");
+            HttpCookie cookie = HttpContext.Current.Request.Cookies["team"];
+            //if (cookie != null)
+            //{
+            //    hubContext.Groups.Add(Context.ConnectionId, cookie.Value);
+            //}
+            
 
             if (request.RequestRejected)
             {
@@ -48,5 +57,16 @@ namespace HackathonManager.WebMvc.Util
             var hubContext = GlobalHost.ConnectionManager.GetHubContext<ProgressHub>();
             hubContext.Groups.Add(connectionId, team.Name);
         }
+
+        https://docs.microsoft.com/en-us/aspnet/signalr/overview/guide-to-the-api/working-with-groups
+        //public Task JoinRoom(string roomName)
+        //{
+        //    return Groups.Add(Context.ConnectionId, roomName);
+        //}
+
+        //public Task LeaveRoom(string roomName)
+        //{
+        //    return Groups.Remove(Context.ConnectionId, roomName);
+        //}
     }
 }
