@@ -7,6 +7,7 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using HackathonManager.WebMvc.Util;
+using HackathonManager.Models;
 
 namespace HackathonManager.WebMvc.Controllers
 {

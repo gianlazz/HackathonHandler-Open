@@ -165,14 +165,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JudgesController.cs" />
-    <Compile Include="Controllers\MentorRequest.cs" />
     <Compile Include="Controllers\RequestUpdateController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Hubs\MyConnection1.cs" />
-    <Compile Include="Hubs\MyHub1.cs" />
     <Compile Include="Hubs\ProgressHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

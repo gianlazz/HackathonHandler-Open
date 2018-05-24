@@ -45,6 +45,7 @@
     <Compile Include="Models\Judge.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Models\Mentor.cs" />
+    <Compile Include="Models\MentorRequest.cs" />
     <Compile Include="Models\SmsDto.cs" />
     <Compile Include="Interfaces\ISmsService.cs" />
     <Compile Include="Models\Team.cs" />
