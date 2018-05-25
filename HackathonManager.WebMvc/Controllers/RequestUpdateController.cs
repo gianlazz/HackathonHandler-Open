@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using HackathonManager.WebMvc.Util;
 using HackathonManager.Models;
+using SignalRProgressBarSimpleExample.Hubs;
+using Microsoft.AspNet.SignalR;
 
 namespace HackathonManager.WebMvc.Controllers
 {

@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using HackathonManager.DIContext;
 using HackathonManager.DTO;
+using Microsoft.AspNet.SignalR;
+using SignalRProgressBarSimpleExample.Hubs;
 
 namespace HackathonManager.WebMvc.Controllers
 {
@@ -12,6 +14,8 @@ namespace HackathonManager.WebMvc.Controllers
     {
         public ActionResult Index()
         {
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<ProgressHub>();
+            string id = (string)hubContext.Clients.All.GetConnectionId().Result;
 
             var Db = MvcApplication.DbRepo;
 
@@ -57,22 +61,6 @@ namespace HackathonManager.WebMvc.Controllers
 
             return RedirectToAction("Index");
         }
-
-        //public ActionResult Index()
-        //{
-        //    HttpCookie cookie = Request.Cookies["temp"];
-        //    if (cookie == null)
-        //    {
-        //        ViewData["Message"] = "Cookie Not Found";
-        //        Response.Cookies["temp"].Value = "This is a cookie: Welcome to ASP.NET MVC!";
-        //        Response.Cookies["temp"].Expires = DateTime.UtcNow.AddDays(3);
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction("Something");
-        //    }
-        //    return View();
-        //}
 
         public ActionResult Something()
         {

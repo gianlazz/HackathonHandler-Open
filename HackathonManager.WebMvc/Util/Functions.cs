@@ -29,44 +29,5 @@ namespace HackathonManager.WebMvc.Util
             //PUSHING DATA TO ALL CLIENTS
             hubContext.Clients.All.AddProgress(progressMessage, percentage + "%");
         }
-
-        public static void UpdateTeam(MentorRequest request, string message)
-        {
-            var hubContext = GlobalHost.ConnectionManager.GetHubContext<ProgressHub>();
-            //Cookie cookie = Context.Request.Cookies["cookieName"];
-            //HttpCookie cookie = HttpContext.Request.Cookies.Get("team");
-            HttpCookie cookie = HttpContext.Current.Request.Cookies["team"];
-            //if (cookie != null)
-            //{
-            //    hubContext.Groups.Add(Context.ConnectionId, cookie.Value);
-            //}
-            
-
-            if (request.RequestRejected)
-            {
-                hubContext.Clients.Group(request.Team.Name, new string[] { }).RequestUpdate(request, "Request Declined.");
-            }
-            if (request.RequestAccepted)
-            {
-                hubContext.Clients.Group(request.Team.Name, new string[] { }).RequestUpdate(request, "Mentor Accepted Request.");
-            }
-        }
-
-        public static void AddTeam(Team team, string connectionId)
-        {
-            var hubContext = GlobalHost.ConnectionManager.GetHubContext<ProgressHub>();
-            hubContext.Groups.Add(connectionId, team.Name);
-        }
-
-        https://docs.microsoft.com/en-us/aspnet/signalr/overview/guide-to-the-api/working-with-groups
-        //public Task JoinRoom(string roomName)
-        //{
-        //    return Groups.Add(Context.ConnectionId, roomName);
-        //}
-
-        //public Task LeaveRoom(string roomName)
-        //{
-        //    return Groups.Remove(Context.ConnectionId, roomName);
-        //}
     }
 }
