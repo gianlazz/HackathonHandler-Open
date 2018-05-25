@@ -80,6 +80,8 @@ namespace SignalRProgressBarSimpleExample.Hubs
 
         public override Task OnDisconnected(bool stopCalled)
         {
+            Team team;
+            MyUsers.TryRemove(Context.ConnectionId, out team);
             return base.OnDisconnected(stopCalled);
         }
 
