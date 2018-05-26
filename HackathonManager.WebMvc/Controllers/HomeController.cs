@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using HackathonManager.DIContext;
 using HackathonManager.DTO;
+using HackathonManager.PocoModels;
 using Microsoft.AspNet.SignalR;
 using SignalRProgressBarSimpleExample.Hubs;
 
@@ -59,6 +60,28 @@ namespace HackathonManager.WebMvc.Controllers
             {
                 Response.Cookies["team"].Value = "ExampleTeamB";
                 return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult TeamLogin(int teamPin)
+        {
+            var Db = MvcApplication.DbRepo;
+
+            HttpCookie cookie = Request.Cookies["team"];
+
+            //CHECK IF A TEAM BY THAT PIN NUMBER EXSISTS
+            if (Db.Single<Team>(x => x.PinNumber == teamPin) != null)
+            {
+                Team team = Db.Single<Team>(x => x.PinNumber == teamPin);
+
+                if (cookie == null)
+                {
+                    Response.Cookies["team"].Value = team.Name;
+                    Response.Cookies["team"].Expires = DateTime.UtcNow.AddDays(3);
+                }
             }
 
             return RedirectToAction("Index");
