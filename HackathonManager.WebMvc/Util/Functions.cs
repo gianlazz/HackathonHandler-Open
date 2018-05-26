@@ -62,8 +62,8 @@ namespace HackathonManager.WebMvc.Util
             //    }
             //}
 
-            //hubContext.Clients.Group("ExampleTeamB").AddProgress(progressMessage, percentage + "%");
-            hubContext.Clients.Group("team").AddProgress(progressMessage, percentage + "%");
+            hubContext.Clients.Group("ExampleTeamB").AddProgress(progressMessage, percentage + "%");
+            //hubContext.Clients.Group("team").AddProgress(progressMessage, percentage + "%");
         }
     }
 }
