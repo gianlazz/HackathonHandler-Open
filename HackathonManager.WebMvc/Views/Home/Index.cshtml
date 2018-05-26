@@ -20,7 +20,7 @@
             if (i > 0 && i % 3 == 0)
             {
 
-            @:</div><br /><div class="row">
+                @:</div><br /><div class="row">
                 // close and start new row
             }
             <div class="col-md-4 col-sm-1">
@@ -34,14 +34,14 @@
                     {
                         <img class="card-img-top" src="~/Content/blank-profile-picture.png" alt="Card image cap">
                     }
-                        <div class="card-body">
-                            <h5 class="card-title">@Model[i].FirstName</h5>
-                            <p>@Model[i].ProfessionalTitle</p>
-                            <p class="card-text">Interests: @Model[i].Description</p>
-                            <button type="button" class="@(Model[i].IsAvailable ? "btn btn-primary" : "btn btn-outline-secondary")" data-toggle="modal" data-target="@(Model[i].IsAvailable ? "#initialModalPrompt" : "")">
-                                @(Model[i].IsAvailable ? "Request Their Assistance" : "Currently Unavailable")
-                            </button>
-                        </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@Model[i].FirstName</h5>
+                        <p>@Model[i].ProfessionalTitle</p>
+                        <p class="card-text">Interests: @Model[i].Description</p>
+                        <button type="button" class="@(Model[i].IsAvailable ? "btn btn-primary" : "btn btn-outline-secondary")" data-toggle="modal" data-target="@(Model[i].IsAvailable ? "#initialModalPrompt" : "")">
+                            @(Model[i].IsAvailable ? "Request Their Assistance" : "Currently Unavailable")
+                        </button>
+                    </div>
                 </div>
                 <br />
             </div>

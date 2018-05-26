@@ -53,15 +53,6 @@ namespace HackathonManager.WebMvc.Util
 
             //PUSHING DATA TO ALL CLIENTS
 
-            //foreach (KeyValuePair<string, Team> entry in ProgressHub.MyUsers)
-            //{
-            //    // do something with entry.Value or entry.Key
-            //    if (entry.Value == new Team() { Name = "ExampleTeamB" })
-            //    {
-            //        hubContext.Clients.Client(entry.Key).AddProgress(progressMessage, percentage + "%");
-            //    }
-            //}
-
             hubContext.Clients.Group("ExampleTeamB").AddProgress(progressMessage, percentage + "%");
             //hubContext.Clients.Group("team").AddProgress(progressMessage, percentage + "%");
         }
