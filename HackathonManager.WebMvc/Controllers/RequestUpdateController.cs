@@ -50,7 +50,9 @@ namespace HackathonManager.WebMvc.Controllers
                 Thread.Sleep(250);
 
                 //CALLING A FUNCTION THAT CALCULATES PERCENTAGE AND SENDS THE DATA TO THE CLIENT
-                Functions.SendProgress("Process in progress...", i, itemsCount);
+                //Functions.SendProgress("Process in progress...", i, itemsCount);
+                Functions.SendProgressTeamA("Team A's process", i, itemsCount);
+                Functions.SendProgressTeamB("TEAM B'S PROCESS...", i, itemsCount);
             }
 
             return Json("", JsonRequestBehavior.AllowGet);

@@ -30,7 +30,7 @@ namespace HackathonManager.WebMvc.Controllers
             return View(model);
         }
 
-        public ActionResult SetTeam()
+        public ActionResult TeamA()
         {
             HttpCookie cookie = Request.Cookies["team"];
             if (cookie == null)
@@ -41,6 +41,23 @@ namespace HackathonManager.WebMvc.Controllers
             else
             {
                 Response.Cookies["team"].Value = "ExampleTeam";
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult TeamB()
+        {
+            HttpCookie cookie = Request.Cookies["team"];
+            if (cookie == null)
+            {
+                Response.Cookies["team"].Value = "ExampleTeamB";
+                Response.Cookies["team"].Expires = DateTime.UtcNow.AddDays(3);
+            }
+            else
+            {
+                Response.Cookies["team"].Value = "ExampleTeamB";
                 return RedirectToAction("Index");
             }
 

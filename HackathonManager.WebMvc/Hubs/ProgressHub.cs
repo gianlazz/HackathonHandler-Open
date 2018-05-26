@@ -73,6 +73,17 @@ namespace SignalRProgressBarSimpleExample.Hubs
 
                 //Groups.Add(Context.ConnectionId, name);
                 Groups.Add(Context.ConnectionId, cookie.Name);
+
+                if (cookie.Value != null)
+                {
+                    MyUsers.TryAdd(Context.ConnectionId, new Team() { Name = cookie.Value });
+                    //string name = Context.User.Identity.Name;
+
+                    //Groups.Add(Context.ConnectionId, name);
+
+                    //Groups.Add(Context.ConnectionId, cookie.Value);
+                    Groups.Add(Context.ConnectionId, cookie.Name);
+                }
             }
 
             return base.OnConnected();
@@ -87,6 +98,25 @@ namespace SignalRProgressBarSimpleExample.Hubs
 
         public override Task OnReconnected()
         {
+            Cookie cookie = Context.Request.Cookies["team"];
+            if (cookie != null)
+            {
+                MyUsers.TryAdd(Context.ConnectionId, new Team() { Name = cookie.Value });
+                //string name = Context.User.Identity.Name;
+
+                //Groups.Add(Context.ConnectionId, name);
+                Groups.Add(Context.ConnectionId, cookie.Name);
+
+                if (cookie.Value != null)
+                {
+                    MyUsers.TryAdd(Context.ConnectionId, new Team() { Name = cookie.Value });
+                    //string name = Context.User.Identity.Name;
+
+                    //Groups.Add(Context.ConnectionId, name);
+                    Groups.Add(Context.ConnectionId, cookie.Name);
+                }
+            }
+
             return base.OnReconnected();
         }
     }
