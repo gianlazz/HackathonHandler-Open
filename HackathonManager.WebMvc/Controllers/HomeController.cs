@@ -82,6 +82,11 @@ namespace HackathonManager.WebMvc.Controllers
                     Response.Cookies["team"].Value = team.Name;
                     Response.Cookies["team"].Expires = DateTime.UtcNow.AddDays(3);
                 }
+                if (cookie != null && cookie.Value == "")
+                {
+                    Response.Cookies["team"].Value = team.Name;
+                    Response.Cookies["team"].Expires = DateTime.UtcNow.AddDays(3);
+                }
             }
 
             return RedirectToAction("Index");
