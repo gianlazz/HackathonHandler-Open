@@ -23,7 +23,7 @@ namespace HackathonManager.AdminWebMvc.Controllers
         // GET: Teams/Create
         public ActionResult Create()
         {
-            var team = new Team();
+            var team = new UniqueTeamFactory(_repo).InstantiateUniquely();
             return View(team);
         }
 
