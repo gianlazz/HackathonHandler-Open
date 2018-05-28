@@ -23,35 +23,35 @@ namespace HackathonManager
         }
 
         //SHOULD GET TEST COVERAGE FOR THIS!
-        public int GenerateNewPin(Team team, int length = 4)
+        public int GenerateNewTeamPin(Team team)
         {
             do
             {
-                _proposedPin = GenerateRandomNo(length);
+                _proposedPin = GenerateRandomNo();
             } while (_Db.All<Team>().Where(x => x.PinNumber == _proposedPin).Any());
 
             return _proposedPin;
         }
 
-        private int GenerateRandomNo(int length)
-        {
-            string maxString = string.Empty;
-            for (int i = 0; i < length; i++)
-            {
-                maxString += "9";
-            }
-
-            int max = int.Parse(maxString);
-            return int.Parse(_random.Next(0, max).ToString("D4"));
-        }
-
-        //public int GenerateRandomNo()
+        //private int GenerateRandomNo(int length)
         //{
-        //    int _min = 1000;
-        //    int _max = 9999;
-        //    Random _rdm = new Random();
-        //    return _rdm.Next(_min, _max);
+        //    string maxString = string.Empty;
+        //    for (int i = 0; i < length; i++)
+        //    {
+        //        maxString += "9";
+        //    }
+
+        //    int max = int.Parse(maxString);
+        //    return int.Parse(_random.Next(0, max).ToString("D4"));
         //}
+
+        public int GenerateRandomNo()
+        {
+            int _min = 1000;
+            int _max = 9999;
+            Random _rdm = new Random();
+            return _rdm.Next(_min, _max);
+        }
 
     }
 }

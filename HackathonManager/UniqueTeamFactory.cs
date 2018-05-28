@@ -20,7 +20,7 @@ namespace HackathonManager
 
         public Team InstantiateUniquely()
         {
-            _pinNumber = new PinGenerator(_Db).GenerateNewPin(new Team());
+            _pinNumber = new PinGenerator(_Db).GenerateNewTeamPin(new Team());
             return new Team() { PinNumber = _pinNumber };
         }
     }

@@ -22,7 +22,7 @@ namespace HackathonManager.Tests
             generator._proposedPin = 1234;
 
             //Act
-            var result = generator.GenerateNewPin(new Team());
+            var result = generator.GenerateNewTeamPin(new Team());
 
             //Assert
             Assert.That(() => result != 1234);
