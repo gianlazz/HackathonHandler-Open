@@ -11,13 +11,16 @@ namespace HackathonManager
     public class UniqueTeamFactory
     {
         private int _pinNumber;
+        private readonly IRepository _Db;
         public UniqueTeamFactory(IRepository repository)
         {
-            _pinNumber = new PinGenerator(repository).GenerateNewPin(new Team());
+            _Db = repository;
+            //_pinNumber = new PinGenerator(repository).GenerateNewPin(new Team());
         }
 
         public Team InstantiateUniquely()
         {
+            _pinNumber = new PinGenerator(_Db).GenerateNewPin(new Team());
             return new Team() { PinNumber = _pinNumber };
         }
     }
