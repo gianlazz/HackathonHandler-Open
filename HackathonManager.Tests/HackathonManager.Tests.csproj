@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IncomingSmsHandlerTests.cs" />
+    <Compile Include="PinGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SrndMentorCsvDtoConverterTest.cs" />
   </ItemGroup>

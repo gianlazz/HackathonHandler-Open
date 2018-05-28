@@ -8,10 +8,14 @@ using System.Threading.Tasks;
 
 namespace HackathonManager
 {
-    class PinGenerator
+    public class PinGenerator
     {
         private readonly IRepository _Db;
         private readonly Random _random = new Random();
+        /// <summary>
+        /// Exposed for testing purposes.
+        /// </summary>
+        public int _proposedPin;
 
         public PinGenerator(IRepository db)
         {
@@ -19,15 +23,14 @@ namespace HackathonManager
         }
 
         //SHOULD GET TEST COVERAGE FOR THIS!
-        public int Generate(Team team, int length = 4)
+        public int GenerateNewPin(Team team, int length = 4)
         {
-            int proposedPin;
             do
             {
-                proposedPin = GenerateRandomNo(length);
-            } while (_Db.All<Team>().Where(x => x.PinNumber == proposedPin).Any());
+                _proposedPin = GenerateRandomNo(length);
+            } while (_Db.All<Team>().Where(x => x.PinNumber == _proposedPin).Any());
 
-            return proposedPin;
+            return _proposedPin;
         }
 
         private int GenerateRandomNo(int length)
