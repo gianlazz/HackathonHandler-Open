@@ -49,6 +49,7 @@
     <Compile Include="Models\SmsDto.cs" />
     <Compile Include="Interfaces\ISmsService.cs" />
     <Compile Include="Models\Team.cs" />
+    <Compile Include="PinGenerator.cs" />
     <Compile Include="RegisterMentor.cs" />
     <Compile Include="RepositoryPattern\IRepository.cs" />
     <Compile Include="Models\Sms.cs" />
