@@ -31,40 +31,6 @@ namespace HackathonManager.WebMvc.Controllers
             return View(model);
         }
 
-        public ActionResult TeamA()
-        {
-            HttpCookie cookie = Request.Cookies["team"];
-            if (cookie == null)
-            {
-                Response.Cookies["team"].Value = "ExampleTeam";
-                Response.Cookies["team"].Expires = DateTime.UtcNow.AddDays(3);
-            }
-            else
-            {
-                Response.Cookies["team"].Value = "ExampleTeam";
-                return RedirectToAction("Index");
-            }
-
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult TeamB()
-        {
-            HttpCookie cookie = Request.Cookies["team"];
-            if (cookie == null)
-            {
-                Response.Cookies["team"].Value = "ExampleTeamB";
-                Response.Cookies["team"].Expires = DateTime.UtcNow.AddDays(3);
-            }
-            else
-            {
-                Response.Cookies["team"].Value = "ExampleTeamB";
-                return RedirectToAction("Index");
-            }
-
-            return RedirectToAction("Index");
-        }
-
         [HttpPost]
         public ActionResult TeamLogin(int teamPin)
         {
@@ -107,11 +73,22 @@ namespace HackathonManager.WebMvc.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Something()
+        [HttpPost]
+        public ActionResult MentorRequest(int teamPin, Guid mentorGuidId)
         {
-            HttpCookie cookie = Request.Cookies["temp"];
-            ViewData["Message"] = cookie.Value;
-            return View();
+            var Db = MvcApplication.DbRepo;
+            try
+            {
+                var team = Db.Single<Team>(x => x.PinNumber == teamPin);
+                var mentor = Db.Single<Mentor>(x => x.GuidId == mentorGuidId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

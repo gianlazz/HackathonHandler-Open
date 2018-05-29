@@ -59,7 +59,7 @@
             {
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Re-enter your team pin to request assitance from @mentor.FirstName</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Re-enter your pin to request @mentor.FirstName's assistance</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -67,7 +67,8 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                @Html.TextBox("teamPin", null, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Team Pin", @type = "number" })
+                                @Html.TextBox("teamPin", null, htmlAttributes: new { @class = "form-control", @placeholder = "Team Pin", @type = "number" })
+                                @Html.Hidden("mentorGuidId", mentor.GuidId)
                                 <br />
                                 <small id="emailHelp" class="form-text text-muted">You only have to enter your pin once to log in and enable your teams real time updates, however you must re-enter your pin upon each request.</small>
                             </div>
