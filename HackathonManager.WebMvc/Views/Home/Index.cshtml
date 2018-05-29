@@ -51,36 +51,36 @@
 </div>
 
 <!-- MODALS -->
-@for (int i = 0; i < Model.Count; i++)
+@foreach (var mentor in Model)
 {
-    <div class="modal fade" id="@Model[i].GuidId.ToString()" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        @using (Html.BeginForm("MentorRequest", "Home"))
-        {
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Re-enter your team pin to request assitance from @Model[i].FirstName</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        @Html.TextBox("teamPin", null, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Team Pin", @type = "number" })
-                        <br />
-                        <small id="emailHelp" class="form-text text-muted">You only have to enter your pin once to log in and enable your teams real time updates, however you must re-enter your pin upon each request.</small>
+    <div class="modal fade" id="@mentor.GuidId.ToString()" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            @using (Html.BeginForm("MentorRequest", "Home"))
+            {
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Re-enter your team pin to request assitance from @mentor.FirstName</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary" type="submit" value="#teamPin" id="btnSubmit">Submit</button>
-            </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                @Html.TextBox("teamPin", null, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Team Pin", @type = "number" })
+                                <br />
+                                <small id="emailHelp" class="form-text text-muted">You only have to enter your pin once to log in and enable your teams real time updates, however you must re-enter your pin upon each request.</small>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" type="submit" value="#teamPin" id="btnSubmit">Submit</button>
+                    </div>
+                </div>
+            }
         </div>
-        }
     </div>
-</div>
 }
 
 <div class="modal fade" id="yayModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -100,16 +100,16 @@
             <div class="modal-footer">
 
                 <!-- Trying to prevent youtube autoplay until modal opens then end on hide
-       <script>
-        $('#exampleModalCenter').on('hide', function () {
-            $('.modal-body iframe').attr('src', '');
-        });
-    </script>
-    -->
+                   <script>
+                    $('#exampleModalCenter').on('hide', function () {
+                        $('.modal-body iframe').attr('src', '');
+                    });
+                </script>
+                -->
                 <!--
-                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    <button type="button" class="btn btn-primary">Save changes</button>
-    -->
+                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                -->
             </div>
         </div>
     </div>
