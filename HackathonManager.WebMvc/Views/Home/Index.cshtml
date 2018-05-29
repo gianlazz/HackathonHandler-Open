@@ -38,7 +38,7 @@
                         <h5 class="card-title">@Model[i].FirstName</h5>
                         <p>@Model[i].ProfessionalTitle</p>
                         <p class="card-text">Interests: @Model[i].Description</p>
-                        <button type="button" class="@(Model[i].IsAvailable ? "btn btn-primary" : "btn btn-outline-secondary")" data-toggle="modal" data-target="@(Model[i].IsAvailable ? "#mentorRequestUpdateModal" : "")">
+                        <button type="button" class="@(Model[i].IsAvailable ? "btn btn-primary" : "btn btn-outline-secondary")" data-toggle="modal" data-target="@(Model[i].IsAvailable ? "#"+Model[i].GuidId.ToString() : "")">
                             @(Model[i].IsAvailable ? "Request Their Assistance" : "Currently Unavailable")
                         </button>
                     </div>
@@ -51,13 +51,15 @@
 </div>
 
 <!-- MODALS -->
-<div class="modal fade" id="mentorRequestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+@for (int i = 0; i < Model.Count; i++)
+{
+    <div class="modal fade" id="@Model[i].GuidId.ToString()" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         @using (Html.BeginForm("MentorRequest", "Home"))
         {
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Re-enter your team pin to make a request</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Re-enter your team pin to request assitance from @Model[i].FirstName</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -72,16 +74,14 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="submit" value="#teamPin" id="btnSubmit">Submit</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                @*<button type="button" class="btn btn-primary">Submit</button>*@
-                <a class="btn btn-primary" href="/RequestUpdate/">RequestUpdateLink</a>
-
+                <button class="btn btn-primary" type="submit" value="#teamPin" id="btnSubmit">Submit</button>
             </div>
         </div>
         }
     </div>
 </div>
+}
 
 <div class="modal fade" id="yayModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
