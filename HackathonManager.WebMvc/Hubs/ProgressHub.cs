@@ -13,10 +13,6 @@ namespace SignalRProgressBarSimpleExample.Hubs
         {
             var hubContext = GlobalHost.ConnectionManager.GetHubContext<ProgressHub>();
 
-            if (request.RequestRejected)
-            {
-                hubContext.Clients.Group(request.Team.Name, new string[] { }).RequestUpdate(request, "Request Declined.");
-            }
             if (request.RequestAccepted)
             {
                 hubContext.Clients.Group(request.Team.Name, new string[] { }).RequestUpdate(request, "Mentor Accepted Request.");

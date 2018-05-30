@@ -19,9 +19,9 @@ namespace HackathonManager.WebMvc.Controllers
         [HttpPost]
         public ActionResult Index(Mentor mentor, Team team, List<SmsDto> smsMessages)
         {
-            var mentorRequest = new MentorRequest(mentor, team);
+            //var mentorRequest = new MentorRequest(mentor, team);
 
-            return View(mentorRequest);
+            return View();
         }
 
         // GET: RequestUpdate
@@ -34,9 +34,9 @@ namespace HackathonManager.WebMvc.Controllers
             //All of these transactions should be handled through a queue and monitored through the
             //Admin page
 
-            var mentorRequest = new MentorRequest(new Mentor() { FirstName = "Gian" }, new Team() { Name = "ExampleTeam" });
+            //var mentorRequest = new MentorRequest(new Mentor() { FirstName = "Gian" }, new Team() { Name = "ExampleTeam" });
 
-            return View(mentorRequest);
+            return View();
         }
 
         public JsonResult LongRunningProcess()

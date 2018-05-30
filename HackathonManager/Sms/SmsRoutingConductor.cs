@@ -1,4 +1,5 @@
 ﻿using HackathonManager.DTO;
+using HackathonManager.Models;
 using HackathonManager.RepositoryPattern;
 using System;
 using System.Collections.Concurrent;
@@ -11,16 +12,23 @@ namespace HackathonManager.Sms
 {
     public class SmsRoutingConductor
     {
+        #region fields
         public static ConcurrentQueue<SmsDto> InboundMessages = new ConcurrentQueue<SmsDto>();
         public static ConcurrentQueue<SmsDto> OutboundMessages = new ConcurrentQueue<SmsDto>();
         private IRepository _Db;
         private List<TwoWayCommMatch> _matches = new List<TwoWayCommMatch>();
 
+        public static ConcurrentBag<MentorRequest> _unprocessedMentorRequests = new ConcurrentBag<MentorRequest>();
+        #endregion
+
+        #region ctor
         public SmsRoutingConductor(IRepository repository)
         {
             _Db = repository;
         }
+        #endregion
 
+        #region Public Methods
         public void ProcessQueues()
         {
             foreach (var inboundSms in InboundMessages)
@@ -38,15 +46,9 @@ namespace HackathonManager.Sms
             }
 
         }
+        #endregion
 
-        private MatchType EvaluateMatchType (TwoWayCommMatch twoWay)
-        {
-            if (CheckIfMentorRequest(twoWay)) { return MatchType.MentorRequest; }
-            //if (CheckIfJudgingVote(twoWay)) { return MatchType.JudgingVote; }
-
-            return MatchType.None;
-        }
-
+        #region MentorRequest Handeling
         private bool CheckIfMentorRequest(TwoWayCommMatch twoWay)
         {
             /* $"🔥 {mentor.FirstName}, team {team.Name}, located in {team.Location},
@@ -69,6 +71,18 @@ namespace HackathonManager.Sms
 
             }
         }
+        #endregion
+
+        #region Helper Methods
+        private MatchType EvaluateMatchType (TwoWayCommMatch twoWay)
+        {
+            if (CheckIfMentorRequest(twoWay)) { return MatchType.MentorRequest; }
+            //if (CheckIfJudgingVote(twoWay)) { return MatchType.JudgingVote; }
+
+            return MatchType.None;
+        }
+        #endregion
+
     }
 
     public class TwoWayCommMatch
