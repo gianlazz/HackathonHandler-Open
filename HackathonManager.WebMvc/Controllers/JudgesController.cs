@@ -9,7 +9,7 @@ namespace HackathonManager.WebMvc.Controllers
 {
     public class JudgesController : Controller
     {
-        private IRepository _Db = MvcApplication.DbRepo;
+        private IRepository _Db = MvcApplication._dbRepo;
 
         // GET: Judges
         public ActionResult Index()

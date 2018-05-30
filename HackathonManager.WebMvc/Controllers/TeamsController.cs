@@ -10,7 +10,7 @@ namespace HackathonManager.WebMvc.Controllers
 {
     public class TeamsController : Controller
     {
-        private IRepository _Db = MvcApplication.DbRepo;
+        private IRepository _Db = MvcApplication._dbRepo;
 
         // GET: Teams
         public ActionResult Index()

@@ -47,7 +47,8 @@
     <Compile Include="Models\Mentor.cs" />
     <Compile Include="Models\MentorRequest.cs" />
     <Compile Include="Models\SmsDto.cs" />
-    <Compile Include="Interfaces\ISmsService.cs" />
+    <Compile Include="Models\TeamVote.cs" />
+    <Compile Include="Sms\ISmsService.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="PinGenerator.cs" />
     <Compile Include="RegisterMentor.cs" />
@@ -55,9 +56,12 @@
     <Compile Include="Models\Sms.cs" />
     <Compile Include="RepositoryPattern\Log.cs" />
     <Compile Include="RoomNameEnum.cs" />
-    <Compile Include="SmsService.cs" />
+    <Compile Include="Sms\SmsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UniqueTeamFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -18,7 +18,7 @@ namespace HackathonManager.WebMvc.Controllers
             var hubContext = GlobalHost.ConnectionManager.GetHubContext<ProgressHub>();
             string id = (string)hubContext.Clients.All.GetConnectionId().Result;
 
-            var Db = MvcApplication.DbRepo;
+            var Db = MvcApplication._dbRepo;
 
             //var db = Context.GetMLabsMongoDbRepo();
             var model = new List<Mentor>();
@@ -34,7 +34,7 @@ namespace HackathonManager.WebMvc.Controllers
         [HttpPost]
         public ActionResult TeamLogin(int teamPin)
         {
-            var Db = MvcApplication.DbRepo;
+            var Db = MvcApplication._dbRepo;
 
             HttpCookie cookie = Request.Cookies["team"];
 
@@ -76,16 +76,23 @@ namespace HackathonManager.WebMvc.Controllers
         [HttpPost]
         public ActionResult MentorRequest(int teamPin, Guid mentorGuidId)
         {
-            var Db = MvcApplication.DbRepo;
+            var Db = MvcApplication._dbRepo;
+            var sms = MvcApplication._smsService;
             try
             {
                 var team = Db.Single<Team>(x => x.PinNumber == teamPin);
                 var mentor = Db.Single<Mentor>(x => x.GuidId == mentorGuidId);
+
+                sms.SendSms(uint.Parse(mentor.PhoneNumber), $"🔥 {mentor.FirstName}, team {team.Name}, located in {team.Location}, has requested your assistance.\n\n" +
+                    $"Reply with:\n" +
+                    $"Y to accept " +
+                    $"\nor\n " +
+                    $"N to reject the request");
             }
             catch (Exception)
             {
-
-                throw;
+                //IS THROWING EXCEPTION FOR NOT HAVING CORRECTLY SETUP NEWTONSOFT.JSON DEPENDENCY
+                //throw;
             }
 
             return RedirectToAction("Index");

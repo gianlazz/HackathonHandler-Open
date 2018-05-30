@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HackathonManager.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,8 @@ namespace HackathonManager.WebMvc
 {
     public class MvcApplication : System.Web.HttpApplication
     {
-        public static HackathonManager.RepositoryPattern.IRepository DbRepo = DIContext.Context.GetMLabsMongoDbRepo();
+        public static HackathonManager.RepositoryPattern.IRepository _dbRepo = DIContext.Context.GetMLabsMongoDbRepo();
+        public static ISmsService _smsService = DIContext.Context.GetTwilioSmsService();
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
