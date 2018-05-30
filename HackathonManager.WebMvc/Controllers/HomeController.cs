@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using HackathonManager.DIContext;
 using HackathonManager.DTO;
+using HackathonManager.Models;
 using HackathonManager.PocoModels;
+using HackathonManager.Sms;
 using Microsoft.AspNet.SignalR;
 using SignalRProgressBarSimpleExample.Hubs;
 
@@ -78,16 +80,27 @@ namespace HackathonManager.WebMvc.Controllers
         {
             var Db = MvcApplication._dbRepo;
             var sms = MvcApplication._smsService;
+            var request = new MentorRequest();
             try
             {
                 var team = Db.Single<Team>(x => x.PinNumber == teamPin);
                 var mentor = Db.Single<Mentor>(x => x.GuidId == mentorGuidId);
 
-                sms.SendSms(uint.Parse(mentor.PhoneNumber), $"🔥 {mentor.FirstName}, team {team.Name}, located in {team.Location}, has requested your assistance.\n\n" +
+                request.Team = team;
+                request.Mentor = mentor;
+
+                var message = $"🔥 { mentor.FirstName}, team { team.Name}, located in { team.Location}, has requested your assistance.\n\n" +
                     $"Reply with:\n" +
                     $"Y to accept " +
                     $"\nor\n " +
-                    $"N to reject the request");
+                    $"N to reject the request";
+
+                request.RequestMessageBody = message;
+
+                sms.SendSms(uint.Parse(mentor.PhoneNumber), message);
+
+                SmsRoutingConductor.UnprocessedMentorRequests.Add(request);
+                Db.Add<MentorRequest>(request);
             }
             catch (Exception)
             {

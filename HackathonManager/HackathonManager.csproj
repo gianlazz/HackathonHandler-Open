@@ -47,6 +47,7 @@
     <Compile Include="Models\Mentor.cs" />
     <Compile Include="Models\MentorRequest.cs" />
     <Compile Include="Models\SmsDto.cs" />
+    <Compile Include="Models\StringConsts.cs" />
     <Compile Include="Models\TeamVote.cs" />
     <Compile Include="Sms\SmsRoutingConductor.cs" />
     <Compile Include="Sms\ISmsService.cs" />

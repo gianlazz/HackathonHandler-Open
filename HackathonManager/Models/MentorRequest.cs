@@ -6,16 +6,20 @@ namespace HackathonManager.Models
 {
     public class MentorRequest
     {
-        public DateTime DateTimeOfRequest { get; set; }
+        public readonly DateTime DateTimeOfRequest;
+        public readonly Guid GuidId;
         public Mentor Mentor { get; set; }
         public Team Team { get; set; }
         public bool RequestAccepted { get; internal set; }
         public bool RequestHasBeenProcessed { get; set; }
         public DateTime DateTimeWhenProcessed { get; set; }
+        public string RequestMessageBody { get; set; }
+        public string ReplyMessageBody { get; set; }
 
         public MentorRequest()
         {
             DateTimeOfRequest = DateTime.Now;
+            GuidId = Guid.NewGuid();
         }
     }
 }
