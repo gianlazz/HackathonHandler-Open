@@ -48,7 +48,7 @@
     <Compile Include="Models\MentorRequest.cs" />
     <Compile Include="Models\SmsDto.cs" />
     <Compile Include="Models\TeamVote.cs" />
-    <Compile Include="Sms\InboundSmsRoutingConductor.cs" />
+    <Compile Include="Sms\SmsRoutingConductor.cs" />
     <Compile Include="Sms\ISmsService.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="PinGenerator.cs" />
