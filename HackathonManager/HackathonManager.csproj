@@ -55,7 +55,7 @@
     <Compile Include="PinGenerator.cs" />
     <Compile Include="RegisterMentor.cs" />
     <Compile Include="RepositoryPattern\IRepository.cs" />
-    <Compile Include="RepositoryPattern\Log.cs" />
+    <Compile Include="Models\Log.cs" />
     <Compile Include="RoomNameEnum.cs" />
     <Compile Include="Sms\SmsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

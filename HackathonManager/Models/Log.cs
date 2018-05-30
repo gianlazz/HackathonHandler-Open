@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HackathonManager.RepositoryPattern
+namespace HackathonManager.Models
 {
-    class Log
+    public class Log
     {
         public DateTime DateTime { get { return DateTime.Now; } }
         public string Details { get; set; }

@@ -81,31 +81,45 @@ namespace HackathonManager.WebMvc.Controllers
             var Db = MvcApplication._dbRepo;
             var sms = MvcApplication._smsService;
             var request = new MentorRequest();
+            Team team = null;
+            Mentor mentor = null;
             try
             {
-                var team = Db.Single<Team>(x => x.PinNumber == teamPin);
-                var mentor = Db.Single<Mentor>(x => x.GuidId == mentorGuidId);
+                team = Db.Single<Team>(x => x.PinNumber == teamPin);
+                mentor = Db.Single<Mentor>(x => x.GuidId == mentorGuidId);
+            }
+            catch (Exception ex)
+            {
+                Db.Add<Log>(new Log() { Details = ex.ToString() });
+            }
 
-                request.Team = team;
-                request.Mentor = mentor;
+            request.Team = team;
+            request.Mentor = mentor;
+            var message = $"🔥 { mentor.FirstName}, team { team.Name}, located in { team.Location}, has requested your assistance.\n\n" +
+    $"Reply with:\n" +
+    $"Y to accept " +
+    $"\nor\n " +
+    $"N to reject the request";
+            request.RequestMessageBody = message;
 
-                var message = $"🔥 { mentor.FirstName}, team { team.Name}, located in { team.Location}, has requested your assistance.\n\n" +
-                    $"Reply with:\n" +
-                    $"Y to accept " +
-                    $"\nor\n " +
-                    $"N to reject the request";
-
-                request.RequestMessageBody = message;
-
+            try
+            {
                 sms.SendSms(uint.Parse(mentor.PhoneNumber), message);
+            }
+            catch (Exception ex)
+            {
+                //IS THROWING EXCEPTION FOR NOT HAVING CORRECTLY SETUP NEWTONSOFT.JSON DEPENDENCY
+                Db.Add<Log>(new Log() { Details = ex.ToString() });
+            }
 
+            try
+            {
                 SmsRoutingConductor.UnprocessedMentorRequests.Add(request);
                 Db.Add<MentorRequest>(request);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //IS THROWING EXCEPTION FOR NOT HAVING CORRECTLY SETUP NEWTONSOFT.JSON DEPENDENCY
-                //throw;
+                Db.Add<Log>(new Log() { Details = ex.ToString() });
             }
 
             return RedirectToAction("Index");
