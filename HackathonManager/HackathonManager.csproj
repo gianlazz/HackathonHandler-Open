@@ -48,12 +48,12 @@
     <Compile Include="Models\MentorRequest.cs" />
     <Compile Include="Models\SmsDto.cs" />
     <Compile Include="Models\TeamVote.cs" />
+    <Compile Include="Sms\InboundSmsRoutingConductor.cs" />
     <Compile Include="Sms\ISmsService.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="PinGenerator.cs" />
     <Compile Include="RegisterMentor.cs" />
     <Compile Include="RepositoryPattern\IRepository.cs" />
-    <Compile Include="Models\Sms.cs" />
     <Compile Include="RepositoryPattern\Log.cs" />
     <Compile Include="RoomNameEnum.cs" />
     <Compile Include="Sms\SmsService.cs" />
