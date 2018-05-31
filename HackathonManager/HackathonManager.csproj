@@ -49,6 +49,7 @@
     <Compile Include="Models\SmsDto.cs" />
     <Compile Include="Models\StringConsts.cs" />
     <Compile Include="Models\TeamVote.cs" />
+    <Compile Include="Sms\SmsDaemon.cs" />
     <Compile Include="Sms\SmsRoutingConductor.cs" />
     <Compile Include="Sms\ISmsService.cs" />
     <Compile Include="Models\Team.cs" />
