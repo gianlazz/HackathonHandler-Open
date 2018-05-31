@@ -298,6 +298,10 @@
       <Project>{08893ab7-14da-4501-8cf8-1ec76e3a78c5}</Project>
       <Name>HackathonManager.DIContext</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HackathonManager.SmsDaemon\HackathonManager.SmsDaemon.csproj">
+      <Project>{24bbcfba-a663-4c97-b1c6-573d4633ce46}</Project>
+      <Name>HackathonManager.SmsDaemon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HackathonManager\HackathonManager.csproj">
       <Project>{afcf5d64-16ac-46f6-b220-3bb02e72cbb7}</Project>
       <Name>HackathonManager</Name>
