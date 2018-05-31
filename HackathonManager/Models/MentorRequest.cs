@@ -11,7 +11,7 @@ namespace HackathonManager.Models
         public Mentor Mentor { get; set; }
         public Team Team { get; set; }
         public bool RequestAccepted { get; internal set; }
-        public DateTime DateTimeWhenProcessed { get; set; }
+        public DateTime? DateTimeWhenProcessed { get; set; }
         public SmsDto OutboundSms { get; set; }
         public SmsDto InboundSms { get; set; }
 
