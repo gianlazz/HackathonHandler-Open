@@ -16,7 +16,7 @@ namespace HackathonManager.Sms
         public static ConcurrentQueue<SmsDto> InboundMessages = new ConcurrentQueue<SmsDto>();
         public static ConcurrentQueue<SmsDto> OutboundMessages = new ConcurrentQueue<SmsDto>();
         private IRepository _Db;
-        private List<TwoWayCommMatch> _matches = new List<TwoWayCommMatch>();
+        private static List<TwoWayCommMatch> _matches = new List<TwoWayCommMatch>();
 
         public static ConcurrentQueue<MentorRequest> UnprocessedMentorRequests = new ConcurrentQueue<MentorRequest>();
         #endregion

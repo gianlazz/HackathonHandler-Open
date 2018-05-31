@@ -16,15 +16,19 @@ namespace HackathonManager.SmsDaemon
         private static SmsRoutingConductor _conductor = new SmsRoutingConductor(_repo);
         public static void Main(string[] args)
         {
-
+            //!SmsRoutingConductor.UnprocessedMentorRequests.IsEmpty
             var smsThread = new Thread(() => {
-                while (!SmsRoutingConductor.UnprocessedMentorRequests.IsEmpty)
+                while (2 > 1)
                 {
-                    _conductor.ProcessQueues();
-                    bool didDequeue = SmsRoutingConductor
-                                        .UnprocessedMentorRequests
-                                        .TryDequeue(out MentorRequest request);
-                    Thread.Sleep(10);
+                    if (!SmsRoutingConductor.UnprocessedMentorRequests.IsEmpty)
+                    {
+                        _conductor.ProcessQueues();
+                        //bool didDequeue = SmsRoutingConductor
+                        //                    .UnprocessedMentorRequests
+                        //                    .TryDequeue(out MentorRequest request);
+                    }
+
+                    Thread.Sleep(5000);
                 }
             });
             smsThread.Start();
