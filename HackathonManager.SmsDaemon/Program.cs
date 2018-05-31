@@ -28,6 +28,11 @@ namespace HackathonManager.SmsDaemon
                         //                    .TryDequeue(out MentorRequest request);
                     }
 
+                    if (!SmsRoutingConductor.InboundMessages.IsEmpty)
+                    {
+                        var f = 0;
+                    }
+
                     Thread.Sleep(5000);
                 }
             });
