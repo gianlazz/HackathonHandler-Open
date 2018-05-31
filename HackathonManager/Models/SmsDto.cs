@@ -17,6 +17,7 @@ namespace HackathonManager.DTO
         /// A string that uniquely identifies this message
         /// </summary>
         public string Sid { get; set; }
+        public DateTime DateTimeWhenProcessed { get; internal set; }
 
         public SmsDto()
         {

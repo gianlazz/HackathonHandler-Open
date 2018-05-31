@@ -39,7 +39,7 @@ namespace HackathonManager.WebMvc.Controllers
             var Db = MvcApplication._dbRepo;
 
             Db.Add<SmsDto>(smsDto);
-            SmsRoutingConductor.InboundMessages.Enqueue(smsDto);
+            SmsRoutingConductor.InboundMessages.Add(smsDto);
         }
     }
 }

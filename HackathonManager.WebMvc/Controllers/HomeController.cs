@@ -100,11 +100,10 @@ namespace HackathonManager.WebMvc.Controllers
     $"Y to accept " +
     $"\nor\n " +
     $"N to reject the request";
-            request.RequestMessageBody = message;
 
             try
             {
-                sms.SendSms(uint.Parse(mentor.PhoneNumber), message);
+                request.OutboundSms = sms.SendSms(uint.Parse(mentor.PhoneNumber), message);
             }
             catch (Exception ex)
             {
@@ -114,7 +113,9 @@ namespace HackathonManager.WebMvc.Controllers
 
             try
             {
-                SmsRoutingConductor.UnprocessedMentorRequests.Enqueue(request);
+                SmsRoutingConductor.MentorRequests.Add(request);
+
+                //THIS SHOULD BE HANDLED BY THE SMSROUTINGCONDUCTOR
                 Db.Add<MentorRequest>(request);
             }
             catch (Exception ex)

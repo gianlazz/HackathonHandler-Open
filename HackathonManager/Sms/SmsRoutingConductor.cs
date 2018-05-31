@@ -2,6 +2,7 @@
 using HackathonManager.Interfaces;
 using HackathonManager.Models;
 using HackathonManager.RepositoryPattern;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace HackathonManager.Sms
     {
         #region fields
         //THE GOAL IS TO HANDLE EACH ITEM, SAVE IT TO THE DB, AND DEQUEUE IT
-        public static ConcurrentQueue<SmsDto> InboundMessages = new ConcurrentQueue<SmsDto>();
-        public static ConcurrentQueue<SmsDto> OutboundMessages = new ConcurrentQueue<SmsDto>();
-        public static ConcurrentQueue<MentorRequest> UnprocessedMentorRequests = new ConcurrentQueue<MentorRequest>();
+        //STACK, QUEUE OR BAG??
+        public static ConcurrentBag<SmsDto> InboundMessages = new ConcurrentBag<SmsDto>();
+        public static ConcurrentBag<MentorRequest> MentorRequests = new ConcurrentBag<MentorRequest>();
 
         private readonly IRepository _db;
         private readonly ISmsService _sms;
@@ -29,25 +30,27 @@ namespace HackathonManager.Sms
         #endregion
 
         #region Public Methods
-        public void ProcessQueues()
+        public void ProcessMentorRequests()
         {
-            foreach (var inboundSms in InboundMessages)
+            foreach (var inboundSms in InboundMessages.Where(x => x.DateTimeWhenProcessed == null))
             {
-                foreach (var mentorRequest in UnprocessedMentorRequests)
+                foreach (var mentorRequest in MentorRequests.Where(x => x.DateTimeWhenProcessed == null))
                 {
                     if (mentorRequest.OutboundSms.ToPhoneNumber == inboundSms.FromPhoneNumber)
                     {
-                        mentorRequest
-
-                        if (IsAcceptanceResponse(new SmsDto()))
+                        if (IsAcceptanceResponse(inboundSms))
                         {
-                            //NOTIFY PARTY OF ACCEPTANCE
+                            mentorRequest.RequestAccepted = true;
+                            //NOTIFY SIGNALR TEAM
                         }
-                        if (IsRejectionResponse(new SmsDto()))
+                        if (IsRejectionResponse(inboundSms))
                         {
-
+                            mentorRequest.RequestAccepted = false;
+                            //NOTIFY SIGNALR TEAM
                         }
 
+                        mentorRequest.DateTimeWhenProcessed = DateTime.Now;
+                        inboundSms.DateTimeWhenProcessed = DateTime.Now;
                     }
                 }
             }
