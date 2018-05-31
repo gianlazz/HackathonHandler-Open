@@ -37,6 +37,8 @@ namespace HackathonManager.Sms
             smsDto.MessageBody = messageBody;
             smsDto.Sid = message.Sid;
 
+            SmsRoutingConductor.OutboundMessages.Enqueue(smsDto);
+
             return smsDto;
         }
 

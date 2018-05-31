@@ -8,6 +8,7 @@ using Twilio.AspNet.Mvc;
 using Twilio.TwiML;
 using HackathonManager.DTO;
 using HackathonManager.RepositoryPattern;
+using HackathonManager.Sms;
 
 namespace HackathonManager.TwilioBotWebMvc.Controllers
 {
@@ -79,6 +80,7 @@ namespace HackathonManager.TwilioBotWebMvc.Controllers
             var Db = MvcApplication.DbRepo;
 
             Db.Add<SmsDto>(smsDto);
+            SmsRoutingConductor.InboundMessages.Enqueue(smsDto);
         }
     }
 }
