@@ -18,7 +18,7 @@ namespace HackathonManager.Sms
         private IRepository _Db;
         private List<TwoWayCommMatch> _matches = new List<TwoWayCommMatch>();
 
-        public static ConcurrentBag<MentorRequest> UnprocessedMentorRequests = new ConcurrentBag<MentorRequest>();
+        public static ConcurrentQueue<MentorRequest> UnprocessedMentorRequests = new ConcurrentQueue<MentorRequest>();
         #endregion
 
         #region ctor

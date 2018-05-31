@@ -1,4 +1,5 @@
-﻿using HackathonManager.RepositoryPattern;
+﻿using HackathonManager.Models;
+using HackathonManager.RepositoryPattern;
 using HackathonManager.Sms;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,9 @@ namespace HackathonManager.SmsDaemon
                 while (!SmsRoutingConductor.UnprocessedMentorRequests.IsEmpty)
                 {
                     _conductor.ProcessQueues();
+                    bool didDequeue = SmsRoutingConductor
+                                        .UnprocessedMentorRequests
+                                        .TryDequeue(out MentorRequest request);
                     Thread.Sleep(10);
                 }
             });

@@ -114,7 +114,7 @@ namespace HackathonManager.WebMvc.Controllers
 
             try
             {
-                SmsRoutingConductor.UnprocessedMentorRequests.Add(request);
+                SmsRoutingConductor.UnprocessedMentorRequests.Enqueue(request);
                 Db.Add<MentorRequest>(request);
             }
             catch (Exception ex)
