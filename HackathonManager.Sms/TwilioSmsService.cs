@@ -22,9 +22,16 @@ namespace HackathonManager.Sms
 
         public SmsDto SendSms(uint toPhoneNumber, string messageBody)
         {
+            string preparedNumber;
             TwilioClient.Init(accountSid, authToken);
+            if (toPhoneNumber.ToString().StartsWith("+1"))
+                preparedNumber = toPhoneNumber.ToString();
+            else
+            {
+                preparedNumber = "+1" + toPhoneNumber.ToString();
+            }
 
-            var to = new PhoneNumber("+1" + toPhoneNumber.ToString());
+            var to = new PhoneNumber(preparedNumber);
             var message = MessageResource.Create(
                 to,
                 from: new PhoneNumber($"+1{fromNumber}"),
