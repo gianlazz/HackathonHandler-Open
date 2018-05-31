@@ -81,6 +81,22 @@ namespace HackathonManager.Sms
 
             return MatchType.None;
         }
+        private bool IsAcceptanceResponse()
+        {
+            return false;
+        }
+        private bool IsRejectionResponse()
+        {
+            return false;
+        }
+        private void ResponseProcessedConfirmation()
+        {
+
+        }
+        private void UnIdentifiedResponse()
+        {
+
+        }
         #endregion
 
     }
