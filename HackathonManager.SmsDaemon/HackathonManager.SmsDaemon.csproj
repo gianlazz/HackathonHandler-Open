@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AFCF5D64-16AC-46F6-B220-3BB02E72CBB7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HackathonManager</RootNamespace>
-    <AssemblyName>HackathonManager</AssemblyName>
+    <ProjectGuid>{24BBCFBA-A663-4C97-B1C6-573D4633CE46}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>HackathonManager.SmsDaemon</RootNamespace>
+    <AssemblyName>HackathonManager.SmsDaemon</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,29 +42,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILogger.cs" />
-    <Compile Include="IncomingSmsHandler.cs" />
-    <Compile Include="Models\Judge.cs" />
-    <Compile Include="Logger.cs" />
-    <Compile Include="Models\Mentor.cs" />
-    <Compile Include="Models\MentorRequest.cs" />
-    <Compile Include="Models\SmsDto.cs" />
-    <Compile Include="Models\StringConsts.cs" />
-    <Compile Include="Models\TeamVote.cs" />
-    <Compile Include="Sms\SmsRoutingConductor.cs" />
-    <Compile Include="Sms\ISmsService.cs" />
-    <Compile Include="Models\Team.cs" />
-    <Compile Include="PinGenerator.cs" />
-    <Compile Include="RegisterMentor.cs" />
-    <Compile Include="RepositoryPattern\IRepository.cs" />
-    <Compile Include="Models\Log.cs" />
-    <Compile Include="RoomNameEnum.cs" />
-    <Compile Include="Sms\SmsService.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UniqueTeamFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HackathonManager.DIContext\HackathonManager.DIContext.csproj">
+      <Project>{08893ab7-14da-4501-8cf8-1ec76e3a78c5}</Project>
+      <Name>HackathonManager.DIContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HackathonManager.MongoDB\HackathonManager.MongoDB.csproj">
+      <Project>{50001b15-98e6-49e4-abcb-97045df34dfd}</Project>
+      <Name>HackathonManager.MongoDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HackathonManager\HackathonManager.csproj">
+      <Project>{afcf5d64-16ac-46f6-b220-3bb02e72cbb7}</Project>
+      <Name>HackathonManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

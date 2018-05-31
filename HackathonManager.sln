@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.SrndResour
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.AdminWebMvc", "HackathonManager.AdminWebMvc\HackathonManager.AdminWebMvc.csproj", "{FFE77118-EC5C-4072-AF6D-4967B1FEF90B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonManager.SmsDaemon", "HackathonManager.SmsDaemon\HackathonManager.SmsDaemon.csproj", "{24BBCFBA-A663-4C97-B1C6-573D4633CE46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{FFE77118-EC5C-4072-AF6D-4967B1FEF90B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFE77118-EC5C-4072-AF6D-4967B1FEF90B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFE77118-EC5C-4072-AF6D-4967B1FEF90B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24BBCFBA-A663-4C97-B1C6-573D4633CE46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24BBCFBA-A663-4C97-B1C6-573D4633CE46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24BBCFBA-A663-4C97-B1C6-573D4633CE46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24BBCFBA-A663-4C97-B1C6-573D4633CE46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
