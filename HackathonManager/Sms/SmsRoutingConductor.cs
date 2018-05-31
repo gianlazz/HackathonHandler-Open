@@ -16,8 +16,6 @@ namespace HackathonManager.Sms
         public static ConcurrentQueue<SmsDto> OutboundMessages = new ConcurrentQueue<SmsDto>();
         public static ConcurrentQueue<MentorRequest> UnprocessedMentorRequests = new ConcurrentQueue<MentorRequest>();
 
-        //private static List<TwoWayCommMatch> _matches = new List<TwoWayCommMatch>();
-
         private readonly IRepository _db;
         private readonly ISmsService _sms;
         #endregion
@@ -39,66 +37,24 @@ namespace HackathonManager.Sms
                 {
                     if (mentorRequest.OutboundSms.ToPhoneNumber == inboundSms.FromPhoneNumber)
                     {
-                        //mentorRequest
+                        mentorRequest
+
+                        if (IsAcceptanceResponse(new SmsDto()))
+                        {
+                            //NOTIFY PARTY OF ACCEPTANCE
+                        }
+                        if (IsRejectionResponse(new SmsDto()))
+                        {
+
+                        }
 
                     }
                 }
-            }
-
-            foreach (var match in _matches)
-            {
-                if (match.MatchType == MatchType.MentorRequest)
-                {
-                    //DEAL WITH OBJECT IN unproccessedMentorRequests
-
-                    if (IsAcceptanceResponse(new SmsDto()))
-                    {
-                        //NOTIFY PARTY OF ACCEPTANCE
-                    }
-                    if (IsRejectionResponse(new SmsDto()))
-                    {
-
-                    }
-
-
-                }
-            }
-        }
-        #endregion
-
-        #region MentorRequest Handeling
-        private bool CheckIfMentorRequest(TwoWayCommMatch twoWay)
-        {
-            /* $"🔥 {mentor.FirstName}, team {team.Name}, located in {team.Location},
-             * has requested your assistance.\n\n Reply with:\nY to accept \nor\n N to reject the request
-             */
-            if (twoWay.Outbound.MessageBody.Contains("requested your assistance"))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        private void ReplyToMentorRequests()
-        {
-            var studentMentorRequests = _matches.Where(x => x.MatchType == MatchType.MentorRequest).ToList();
-
-            foreach (var request in studentMentorRequests)
-            {
-
             }
         }
         #endregion
 
         #region Helper Methods
-        //private MatchType EvaluateMatchType (TwoWayCommMatch twoWay)
-        //{
-        //    if (CheckIfMentorRequest(twoWay)) { return MatchType.MentorRequest; }
-        //    //if (CheckIfJudgingVote(twoWay)) { return MatchType.JudgingVote; }
-
-        //    return MatchType.None;
-        //}
         private bool IsAcceptanceResponse(SmsDto sms)
         {
             if(sms.MessageBody.Trim().ToLower() == "y" ||
@@ -131,13 +87,6 @@ namespace HackathonManager.Sms
         #endregion
 
     }
-
-    //public class TwoWayCommMatch
-    //{
-    //    public SmsDto Outbound { get; set; }
-    //    public SmsDto Inbound { get; set; }
-    //    public MatchType MatchType { get; set; }
-    //}
 
     public enum MatchType
     {
