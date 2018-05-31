@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace HackathonManager.SmsDaemon
 {
-    class Program
+    public class Program
     {
         private static IRepository _repo = DIContext.Context.GetMLabsMongoDbRepo();
         private static SmsRoutingConductor _conductor = new SmsRoutingConductor(_repo);
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
 
             var smsThread = new Thread(() => {
@@ -27,6 +27,7 @@ namespace HackathonManager.SmsDaemon
                     Thread.Sleep(10);
                 }
             });
+            smsThread.Start();
             #region Sudo Code
             /*
         in ApplicationStart in your MVC project...
