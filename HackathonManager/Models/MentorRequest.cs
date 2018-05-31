@@ -13,8 +13,8 @@ namespace HackathonManager.Models
         public bool RequestAccepted { get; internal set; }
         public bool RequestHasBeenProcessed { get; set; }
         public DateTime DateTimeWhenProcessed { get; set; }
-        public string RequestMessageBody { get; set; }
-        public string ReplyMessageBody { get; set; }
+        public SmsDto OutboundSms { get; set; }
+        public SmsDto InboundSms { get; set; }
 
         public MentorRequest()
         {

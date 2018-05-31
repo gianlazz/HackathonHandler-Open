@@ -1,4 +1,5 @@
-﻿using HackathonManager.Models;
+﻿using HackathonManager.Interfaces;
+using HackathonManager.Models;
 using HackathonManager.RepositoryPattern;
 using HackathonManager.Sms;
 using System;
@@ -13,7 +14,8 @@ namespace HackathonManager.SmsDaemon
     public class Program
     {
         private static IRepository _repo = DIContext.Context.GetMLabsMongoDbRepo();
-        private static SmsRoutingConductor _conductor = new SmsRoutingConductor(_repo);
+        private static ISmsService _sms = DIContext.Context.GetTwilioSmsService();
+        private static SmsRoutingConductor _conductor = new SmsRoutingConductor(_repo, _sms);
         public static void Main(string[] args)
         {
             //!SmsRoutingConductor.UnprocessedMentorRequests.IsEmpty
