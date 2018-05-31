@@ -38,24 +38,37 @@ namespace HackathonManager.Sms
                 {
                     if (mentorRequest.OutboundSms.ToPhoneNumber == inboundSms.FromPhoneNumber)
                     {
-                        _db.Delete<MentorRequest>(mentorRequest);
-
                         if (IsAcceptanceResponse(inboundSms))
                         {
+                            _db.Delete<MentorRequest>(mentorRequest);
+                            _db.Delete<SmsDto>(inboundSms);
                             mentorRequest.RequestAccepted = true;
+                            inboundSms.DateTimeWhenProcessed = DateTime.Now;
+                            mentorRequest.DateTimeWhenProcessed = DateTime.Now;
+                            mentorRequest.InboundSms = inboundSms;
+                            _db.Add<MentorRequest>(mentorRequest);
+                            _db.Add<SmsDto>(inboundSms);
                             //NOTIFY SIGNALR TEAM
                         }
-                        if (IsRejectionResponse(inboundSms))
+                        else if (IsRejectionResponse(inboundSms))
                         {
+                            _db.Delete<MentorRequest>(mentorRequest);
+                            _db.Delete<SmsDto>(inboundSms);
                             mentorRequest.RequestAccepted = false;
+                            inboundSms.DateTimeWhenProcessed = DateTime.Now;
+                            mentorRequest.DateTimeWhenProcessed = DateTime.Now;
+                            mentorRequest.InboundSms = inboundSms;
+                            _db.Add<MentorRequest>(mentorRequest);
+                            _db.Add<SmsDto>(inboundSms);
                             //NOTIFY SIGNALR TEAM
                         }
-
-                        mentorRequest.DateTimeWhenProcessed = DateTime.Now;
-                        inboundSms.DateTimeWhenProcessed = DateTime.Now;
-                        mentorRequest.InboundSms = inboundSms;
-
-                        _db.Add<MentorRequest>(mentorRequest);
+                        else
+                        {
+                            _db.Delete<SmsDto>(inboundSms);
+                            inboundSms.DateTimeWhenProcessed = DateTime.Now;
+                            UnIdentifiedResponse(inboundSms);
+                            _db.Add<SmsDto>(inboundSms);
+                        }
                     }
                 }
             }
@@ -79,11 +92,11 @@ namespace HackathonManager.Sms
 
             return false;
         }
-        private void ResponseProcessedConfirmation(SmsDto sms)
-        {
-            string message = $"Response confirmed.";
-            _sms.SendSms(uint.Parse(sms.FromPhoneNumber), message);
-        }
+        //private void ResponseProcessedConfirmation(SmsDto sms)
+        //{
+        //    string message = $"Response confirmed.";
+        //    _sms.SendSms(uint.Parse(sms.FromPhoneNumber), message);
+        //}
         private void UnIdentifiedResponse(SmsDto sms)
         {
             string message = $"Uncertain how to execute your objective.";

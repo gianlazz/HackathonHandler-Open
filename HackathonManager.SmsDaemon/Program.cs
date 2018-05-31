@@ -22,14 +22,14 @@ namespace HackathonManager.SmsDaemon
             var smsThread = new Thread(() => {
                 while (2 > 1)
                 {
-                    // || SmsRoutingConductor.InboundMessages.Where(x => x.DateTimeWhenProcessed == null).Any()
-                    if (SmsRoutingConductor.MentorRequests.Where(x => x.DateTimeWhenProcessed == null).Any())
+                    if (SmsRoutingConductor.MentorRequests.Where(x => x.DateTimeWhenProcessed == null).Any()
+                        && SmsRoutingConductor.InboundMessages.Where(x => x.DateTimeWhenProcessed == null).Any())
                     {
                         _conductor.ProcessMentorRequests();
                         var f = 0;
                     }
 
-                    Thread.Sleep(250);
+                    Thread.Sleep(500);
                 }
             });
             smsThread.Start();
