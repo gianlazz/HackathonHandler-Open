@@ -38,6 +38,8 @@ namespace HackathonManager.Sms
                 {
                     if (mentorRequest.OutboundSms.ToPhoneNumber == inboundSms.FromPhoneNumber)
                     {
+                        _db.Delete<MentorRequest>(mentorRequest);
+
                         if (IsAcceptanceResponse(inboundSms))
                         {
                             mentorRequest.RequestAccepted = true;
@@ -51,6 +53,9 @@ namespace HackathonManager.Sms
 
                         mentorRequest.DateTimeWhenProcessed = DateTime.Now;
                         inboundSms.DateTimeWhenProcessed = DateTime.Now;
+                        mentorRequest.InboundSms = inboundSms;
+
+                        _db.Add<MentorRequest>(mentorRequest);
                     }
                 }
             }
