@@ -18,5 +18,5 @@
 
 function MentorRequestUpdateModal() {
     $('#mentorRequestUpdateModal').modal('show');
-    $('#mentorRequestUpdateParagraph').text(arguments);
+    $('#mentorRequestUpdateParagraph').text(arguments[0]);
 }
