@@ -20,15 +20,15 @@ namespace HackathonManager.Sms
         const string fromNumber = TwilioCredentials.fromTwilioNumber;
 
 
-        public SmsDto SendSms(uint toPhoneNumber, string messageBody)
+        public SmsDto SendSms(string toPhoneNumber, string messageBody)
         {
             string preparedNumber;
             TwilioClient.Init(accountSid, authToken);
-            if (toPhoneNumber.ToString().StartsWith("+1"))
-                preparedNumber = toPhoneNumber.ToString();
+            if (toPhoneNumber.StartsWith("+1"))
+                preparedNumber = toPhoneNumber;
             else
             {
-                preparedNumber = "+1" + toPhoneNumber.ToString();
+                preparedNumber = "+1" + toPhoneNumber;
             }
 
             var to = new PhoneNumber(preparedNumber);

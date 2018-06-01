@@ -9,6 +9,6 @@ namespace HackathonManager.Interfaces
 {
     public interface ISmsService
     {
-        SmsDto SendSms(uint toPhoneNumber, string messageBody);
+        SmsDto SendSms(string toPhoneNumber, string messageBody);
     }
 }

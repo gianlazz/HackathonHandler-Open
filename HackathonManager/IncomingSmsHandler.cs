@@ -34,7 +34,7 @@ namespace HackathonManager
         {
             if (incomingSmsDto.MessageBody.ToLower().Contains("finished"))
             {
-                _smsService.SendSms(uint.Parse(incomingSmsDto.FromPhoneNumber),
+                _smsService.SendSms(incomingSmsDto.FromPhoneNumber,
                     "Thank you, you'll now be set back as available for others" +
                     "to request your help.");
 
@@ -60,7 +60,7 @@ namespace HackathonManager
         //    }
         //    catch (Exception exception)
         //    {
-        //        _smsService.SendSms(uint.Parse(incomingSms.FromPhoneNumber), exception.ToString());
+        //        _smsService.SendSms(incomingSms.FromPhoneNumber, exception.ToString());
         //        _logger.Log(exception);
         //    }
         //    return false;

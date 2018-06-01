@@ -18,7 +18,7 @@ namespace HackathonManager
             _smsService = sms;
         }
 
-        public SmsDto SendSms(uint toPhoneNumber, string messageBody)
+        public SmsDto SendSms(string toPhoneNumber, string messageBody)
         {
             return _smsService.SendSms(toPhoneNumber, messageBody);
         }

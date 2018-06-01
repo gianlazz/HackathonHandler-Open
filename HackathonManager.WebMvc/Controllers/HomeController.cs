@@ -103,7 +103,7 @@ namespace HackathonManager.WebMvc.Controllers
 
             try
             {
-                request.OutboundSms = sms.SendSms(uint.Parse(mentor.PhoneNumber), message);
+                request.OutboundSms = sms.SendSms(mentor.PhoneNumber, message);
             }
             catch (Exception ex)
             {

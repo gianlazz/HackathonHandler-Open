@@ -92,17 +92,17 @@ namespace HackathonManager.Sms
 
             return false;
         }
-        //private void ResponseProcessedConfirmation(SmsDto sms)
-        //{
-        //    string message = $"Response confirmed.";
-        //    _sms.SendSms(uint.Parse(sms.FromPhoneNumber), message);
-        //}
+        private void ResponseProcessedConfirmation(SmsDto sms)
+        {
+            string message = $"Response confirmed.";
+            _sms.SendSms(sms.FromPhoneNumber, message);
+        }
         private void UnIdentifiedResponse(SmsDto sms)
         {
             string message = $"Uncertain how to execute your objective.";
-            _sms.SendSms(uint.Parse(sms.FromPhoneNumber), message);
+            _sms.SendSms(sms.FromPhoneNumber, message);
             //RESEND THE INITAL PROMPT SMS
-            _sms.SendSms(uint.Parse(sms.FromPhoneNumber), sms.MessageBody);
+            _sms.SendSms(sms.FromPhoneNumber, sms.MessageBody);
             //SHOULD IT BE ADDED TO THE OUTBOUND MESSAGES?
         }
         #endregion
