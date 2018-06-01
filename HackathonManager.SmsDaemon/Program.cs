@@ -22,8 +22,7 @@ namespace HackathonManager.SmsDaemon
             var smsThread = new Thread(() => {
                 while (2 > 1)
                 {
-                    if (SmsRoutingConductor.MentorRequests.Where(x => x.DateTimeWhenProcessed == null).Any()
-                        && SmsRoutingConductor.InboundMessages.Where(x => x.DateTimeWhenProcessed == null).Any())
+                    if (SmsRoutingConductor.InboundMessages.Where(x => x.DateTimeWhenProcessed == null).Any())
                     {
                         _conductor.ProcessMentorRequests();
                         var f = 0;
