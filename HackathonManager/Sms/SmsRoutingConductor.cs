@@ -19,13 +19,15 @@ namespace HackathonManager.Sms
 
         private readonly IRepository _db;
         private readonly ISmsService _sms;
+        private readonly IRequestResponder _recResponder;
         #endregion
 
         #region ctor
-        public SmsRoutingConductor(IRepository repository, ISmsService sms)
+        public SmsRoutingConductor(IRepository repository, ISmsService sms, IRequestResponder requestResponder)
         {
             _db = repository;
             _sms = sms;
+            _recResponder = requestResponder;
         }
         #endregion
 
@@ -51,6 +53,7 @@ namespace HackathonManager.Sms
                             //follow-up steps:
                             ResponseProcessedConfirmation(inboundSms);
                             //NOTIFY SIGNALR TEAM
+                            _recResponder.MentorRequestResponse(mentorRequest);
                         }
                         else if (IsRejectionResponse(inboundSms))
                         {

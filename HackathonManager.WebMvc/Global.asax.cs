@@ -15,6 +15,7 @@ namespace HackathonManager.WebMvc
         public static ISmsService _smsService = DIContext.Context.GetTwilioSmsService();
         protected void Application_Start()
         {
+            SmsDaemon.Program._responder = new Util.Responder();
             SmsDaemon.Program.Main(new string[] { });
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

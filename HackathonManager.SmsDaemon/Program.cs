@@ -15,16 +15,18 @@ namespace HackathonManager.SmsDaemon
     {
         private static IRepository _repo = DIContext.Context.GetMLabsMongoDbRepo();
         private static ISmsService _sms = DIContext.Context.GetTwilioSmsService();
-        private static SmsRoutingConductor _conductor = new SmsRoutingConductor(_repo, _sms);
+        public static IRequestResponder _responder;
+        private static SmsRoutingConductor _conductor = new SmsRoutingConductor(_repo, _sms, _responder);
         public static void Main(string[] args)
         {
             //!SmsRoutingConductor.UnprocessedMentorRequests.IsEmpty
             var smsThread = new Thread(() => {
+                var conductor = new SmsRoutingConductor(_repo, _sms, _responder);
                 while (2 > 1)
                 {
                     if (SmsRoutingConductor.InboundMessages.Where(x => x.DateTimeWhenProcessed == null).Any())
                     {
-                        _conductor.ProcessMentorRequests();
+                        conductor.ProcessMentorRequests();
                         var f = 0;
                     }
 
