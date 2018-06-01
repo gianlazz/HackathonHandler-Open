@@ -104,6 +104,13 @@ namespace HackathonManager.Sms
 
             return false;
         }
+        private bool IsCompletionResponse(SmsDto sms)
+        {
+            if (sms.MessageBody.Trim().ToLower() == "done")
+                return true;
+
+            return false;
+        }
         private void ResponseProcessedConfirmation(SmsDto sms)
         {
             string message = $"Response confirmed.";
