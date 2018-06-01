@@ -48,6 +48,8 @@ namespace HackathonManager.Sms
                             mentorRequest.InboundSms = inboundSms;
                             _db.Add<MentorRequest>(mentorRequest);
                             _db.Add<SmsDto>(inboundSms);
+                            //follow-up steps:
+                            ResponseProcessedConfirmation(inboundSms);
                             //NOTIFY SIGNALR TEAM
                         }
                         else if (IsRejectionResponse(inboundSms))
@@ -60,6 +62,8 @@ namespace HackathonManager.Sms
                             mentorRequest.InboundSms = inboundSms;
                             _db.Add<MentorRequest>(mentorRequest);
                             _db.Add<SmsDto>(inboundSms);
+                            //follow-up steps:
+                            ResponseProcessedConfirmation(inboundSms);
                             //NOTIFY SIGNALR TEAM
                         }
                         else
@@ -70,6 +74,14 @@ namespace HackathonManager.Sms
                             _db.Add<SmsDto>(inboundSms);
                         }
                     }
+                }
+                //IF inboundSms STILL UN PROCCESSED THEN HANDLE IT
+                if (inboundSms.DateTimeWhenProcessed == null)
+                {
+                    _db.Delete<SmsDto>(inboundSms);
+                    inboundSms.DateTimeWhenProcessed = DateTime.Now;
+                    UnIdentifiedResponse(inboundSms);
+                    _db.Add<SmsDto>(inboundSms);
                 }
             }
         }
