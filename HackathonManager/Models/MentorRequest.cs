@@ -12,6 +12,12 @@ namespace HackathonManager.Models
         public Team Team { get; set; }
         public bool RequestAccepted { get; internal set; }
         public DateTime? DateTimeWhenProcessed { get; set; }
+
+        public bool? OverTaskTimeLimit { get; set; }
+        public DateTime? TaskTimeLimit { get; set; }
+        public bool? RequestTimedOut { get; set; }
+        public DateTime? RequestTimeLimit { get; set; }
+
         public SmsDto OutboundSms { get; set; }
         public SmsDto InboundSms { get; set; }
 
