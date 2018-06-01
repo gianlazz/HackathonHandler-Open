@@ -66,7 +66,7 @@ namespace HackathonManager.Sms
                         {
                             _db.Delete<SmsDto>(inboundSms);
                             inboundSms.DateTimeWhenProcessed = DateTime.Now;
-                            UnIdentifiedResponse(inboundSms);
+                            UnIdentifiedResponse(inboundSms, mentorRequest.OutboundSms);
                             _db.Add<SmsDto>(inboundSms);
                         }
                     }
@@ -97,12 +97,13 @@ namespace HackathonManager.Sms
             string message = $"Response confirmed.";
             _sms.SendSms(sms.FromPhoneNumber, message);
         }
-        private void UnIdentifiedResponse(SmsDto sms)
+        private void UnIdentifiedResponse(SmsDto smsResponse, SmsDto lastSmsSent = null)
         {
             string message = $"Uncertain how to execute your objective.";
-            _sms.SendSms(sms.FromPhoneNumber, message);
+            _sms.SendSms(smsResponse.FromPhoneNumber, message);
             //RESEND THE INITAL PROMPT SMS
-            _sms.SendSms(sms.FromPhoneNumber, sms.MessageBody);
+            if (lastSmsSent != null)
+                _sms.SendSms(smsResponse.FromPhoneNumber, lastSmsSent.MessageBody);
             //SHOULD IT BE ADDED TO THE OUTBOUND MESSAGES?
         }
         #endregion
