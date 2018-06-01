@@ -18,6 +18,11 @@ namespace HackathonManager.WebMvc.Util
                 var message = $"{mentorRequest.Mentor.FirstName} accepted your request!";
                 Functions.UpdateTeamOfMentorRequest(mentorRequest.Team, true, message);
             }
+            if (mentorRequest.RequestAccepted == false && mentorRequest.DateTimeWhenProcessed != null)
+            {
+                var message = $"{mentorRequest.Mentor.FirstName} is not available right now";
+                Functions.UpdateTeamOfMentorRequest(mentorRequest.Team, true, message);
+            }
         }
     }
 }

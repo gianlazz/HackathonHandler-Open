@@ -52,6 +52,9 @@ namespace HackathonManager.Sms
                             _db.Add<SmsDto>(inboundSms);
                             //follow-up steps:
                             ResponseProcessedConfirmation(inboundSms);
+                            _db.Delete<Mentor>(mentorRequest.Mentor);
+                            mentorRequest.Mentor.IsAvailable = false;
+                            _db.Add<Mentor>(mentorRequest.Mentor);
                             //NOTIFY SIGNALR TEAM
                             _recResponder.MentorRequestResponse(mentorRequest);
                         }
@@ -68,6 +71,7 @@ namespace HackathonManager.Sms
                             //follow-up steps:
                             ResponseProcessedConfirmation(inboundSms);
                             //NOTIFY SIGNALR TEAM
+                            _recResponder.MentorRequestResponse(mentorRequest);
                         }
                         else
                         {
