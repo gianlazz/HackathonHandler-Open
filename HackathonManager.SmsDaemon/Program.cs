@@ -27,7 +27,6 @@ namespace HackathonManager.SmsDaemon
                     if (SmsRoutingConductor.InboundMessages.Where(x => x.DateTimeWhenProcessed == null).Any())
                     {
                         conductor.ProcessMentorRequests();
-                        var f = 0;
                     }
 
                     Thread.Sleep(500);

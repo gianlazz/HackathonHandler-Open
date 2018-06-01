@@ -15,3 +15,8 @@
         window.progressBarActive = false;
     }
 }
+
+function MentorRequestUpdateModal() {
+    $('#mentorRequestUpdateModal').modal('show');
+    $('#mentorRequestUpdateParagraph').text(arguments);
+}

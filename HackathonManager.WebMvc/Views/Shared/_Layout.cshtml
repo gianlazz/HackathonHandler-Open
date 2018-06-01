@@ -104,9 +104,9 @@
             }
         </div>
     </div>
-
-    <div class="modal fade" id="mentorRequestUpdateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    @*
+          <div class="modal fade" id="mentorRequestUpdateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Contacting Mentor...</h5>
@@ -121,6 +121,25 @@
                         <p>Mentor accepted response and is headed your way.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    *@
+    <div class="modal fade" id="mentorRequestUpdateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Request Accepted</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="mentorRequestUpdateParagraph"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -149,6 +168,11 @@
                 if (percentage == "100%") {
                     ProgressBarModal();
                 }
+            };
+
+            //MENTOR REQUEST UPDATE
+            progress.client.requestUpdate = function (message) {
+                MentorRequestUpdateModal(message);
             };
 
             //Before doing anything with our hub we must start it

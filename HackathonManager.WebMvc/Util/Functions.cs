@@ -68,7 +68,7 @@ namespace HackathonManager.WebMvc.Util
 
             //PUSHING DATA TO ALL CLIENTS
 
-            hubContext.Clients.Group($"{team.Name}").AddProgress(message, percentage + "%");
+            hubContext.Clients.Group($"{team.Name}").requestUpdate(message, percentage);
             //hubContext.Clients.Group("team").AddProgress(progressMessage, percentage + "%");
         }
     }
