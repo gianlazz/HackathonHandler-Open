@@ -82,6 +82,15 @@ namespace HackathonManager.Sms
                         }
                     }
                 }
+
+                //if (IsCompletionResponse(inboundSms))
+                //{
+                //    _db.Delete<SmsDto>(inboundSms);
+                //    inboundSms.DateTimeWhenProcessed = DateTime.Now;
+                //    //
+                //    ResponseProcessedConfirmation(inboundSms);
+                //    _db.Add<SmsDto>(inboundSms);
+                //}
                 //IF inboundSms STILL UN PROCCESSED THEN HANDLE IT
                 if (inboundSms.DateTimeWhenProcessed == null)
                 {
