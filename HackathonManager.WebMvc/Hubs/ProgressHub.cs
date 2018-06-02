@@ -61,7 +61,9 @@ namespace SignalRProgressBarSimpleExample.Hubs
 
         public override Task OnConnected()
         {
-            Cookie usersTeamCookie = Context.Request.Cookies["team"];
+            Cookie usersTeamCookie = null;
+            if (Context.Request.Cookies.ContainsKey("team"))
+                usersTeamCookie = Context.Request.Cookies["team"];
             if (usersTeamCookie != null)
             {
                 MyUsers.TryAdd(Context.ConnectionId, new Team() { Name = usersTeamCookie.Value });
