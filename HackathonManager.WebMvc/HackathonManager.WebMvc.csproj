@@ -205,6 +205,10 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Judges\Leigh_Gower_002 %282%29.jpg" />
+    <Content Include="Content\Judges\Lynne Robinson.jpg" />
+    <Content Include="Content\Judges\Radhika.jpg" />
+    <Content Include="Content\Judges\unnamed.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
