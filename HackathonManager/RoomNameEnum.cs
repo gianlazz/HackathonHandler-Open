@@ -13,6 +13,7 @@ namespace HackathonManager
         Aruba,
         Bahamas,
         BoraBora,
-        Fiji
+        Fiji,
+        Lobby
     }
 }
