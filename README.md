@@ -1,4 +1,9 @@
-# HackathonHandler-Open
+# Depricated:
+For the more up to date implementation see my Lazztech.Cloud project
+
+https://github.com/gianlazz/Lazztech.Cloud
+
+## HackathonHandler-Open
 open sourced version of the repo
 
 Removed the following classes for privacy reasons before opensourcing this:
